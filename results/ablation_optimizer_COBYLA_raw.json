@@ -1,0 +1,37 @@
+[
+  {
+    "method": "COBYLA",
+    "optimal_energy": 0.03775611041865545,
+    "num_evaluations": 42,
+    "time": 3.4227116107940674,
+    "seed": 0
+  },
+  {
+    "method": "COBYLA",
+    "optimal_energy": 0.10610876538534736,
+    "num_evaluations": 42,
+    "time": 4.415120840072632,
+    "seed": 1
+  },
+  {
+    "method": "COBYLA",
+    "optimal_energy": 0.04026418234374601,
+    "num_evaluations": 42,
+    "time": 4.183288812637329,
+    "seed": 2
+  },
+  {
+    "method": "COBYLA",
+    "optimal_energy": 0.03810912352443235,
+    "num_evaluations": 42,
+    "time": 3.6148078441619873,
+    "seed": 3
+  },
+  {
+    "method": "COBYLA",
+    "optimal_energy": 0.0695494405818507,
+    "num_evaluations": 42,
+    "time": 4.324750185012817,
+    "seed": 4
+  }
+]

@@ -1,0 +1,102 @@
+[
+  {
+    "problem": "maxcut",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 9.843481753471561,
+    "error": 9.843481753471561,
+    "cuts": 1,
+    "time": 1.4411993026733398,
+    "seed": 0
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 10.441958813775463,
+    "error": 10.441958813775463,
+    "cuts": 1,
+    "time": 2.2894554138183594,
+    "seed": 1
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 10.29085036667348,
+    "error": 10.29085036667348,
+    "cuts": 1,
+    "time": 3.136428117752075,
+    "seed": 2
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 10.869283733908361,
+    "error": 10.869283733908361,
+    "cuts": 1,
+    "time": 3.515713691711426,
+    "seed": 3
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 7.2652307564484575,
+    "error": 7.2652307564484575,
+    "cuts": 1,
+    "time": 3.3645191192626953,
+    "seed": 4
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 11.568611401988983,
+    "error": 11.568611401988983,
+    "cuts": 1,
+    "time": 4.921100378036499,
+    "seed": 5
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 12.110348407948596,
+    "error": 12.110348407948596,
+    "cuts": 1,
+    "time": 1.4620873928070068,
+    "seed": 6
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 11.212100505606436,
+    "error": 11.212100505606436,
+    "cuts": 1,
+    "time": 2.8278777599334717,
+    "seed": 7
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 15.298665151826992,
+    "error": 15.298665151826992,
+    "cuts": 1,
+    "time": 2.9715828895568848,
+    "seed": 8
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 9.413312515834358,
+    "error": 9.413312515834358,
+    "cuts": 1,
+    "time": 2.0605130195617676,
+    "seed": 9
+  }
+]

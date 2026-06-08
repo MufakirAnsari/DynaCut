@@ -1,0 +1,112 @@
+[
+  {
+    "problem": "maxcut",
+    "ansatz_type": "qaoa",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 7.856588293251094,
+    "error": 7.856588293251094,
+    "cuts": 0,
+    "time": 193.9304211139679,
+    "seed": 0
+  },
+  {
+    "problem": "maxcut",
+    "ansatz_type": "qaoa",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 7.134185602471982,
+    "error": 7.134185602471982,
+    "cuts": 0,
+    "time": 198.9793906211853,
+    "seed": 1
+  },
+  {
+    "problem": "maxcut",
+    "ansatz_type": "qaoa",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 6.968191411577567,
+    "error": 6.968191411577567,
+    "cuts": 0,
+    "time": 193.20991349220276,
+    "seed": 2
+  },
+  {
+    "problem": "maxcut",
+    "ansatz_type": "qaoa",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 10.664687980195158,
+    "error": 10.664687980195158,
+    "cuts": 0,
+    "time": 179.64505434036255,
+    "seed": 3
+  },
+  {
+    "problem": "maxcut",
+    "ansatz_type": "qaoa",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 11.462446701743573,
+    "error": 11.462446701743573,
+    "cuts": 0,
+    "time": 200.61544704437256,
+    "seed": 4
+  },
+  {
+    "problem": "maxcut",
+    "ansatz_type": "qaoa",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 11.722447980797691,
+    "error": 11.722447980797691,
+    "cuts": 0,
+    "time": 206.33258986473083,
+    "seed": 5
+  },
+  {
+    "problem": "maxcut",
+    "ansatz_type": "qaoa",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 11.234923175712138,
+    "error": 11.234923175712138,
+    "cuts": 0,
+    "time": 190.80844926834106,
+    "seed": 6
+  },
+  {
+    "problem": "maxcut",
+    "ansatz_type": "qaoa",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 10.973214849134937,
+    "error": 10.973214849134937,
+    "cuts": 0,
+    "time": 142.95025253295898,
+    "seed": 7
+  },
+  {
+    "problem": "maxcut",
+    "ansatz_type": "qaoa",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 14.98627942409699,
+    "error": 14.98627942409699,
+    "cuts": 0,
+    "time": 202.6929702758789,
+    "seed": 8
+  },
+  {
+    "problem": "maxcut",
+    "ansatz_type": "qaoa",
+    "num_qubits": 10,
+    "exact_energy": 0.0,
+    "e_cut": 9.815897052519304,
+    "error": 9.815897052519304,
+    "cuts": 0,
+    "time": 207.01691317558289,
+    "seed": 9
+  }
+]

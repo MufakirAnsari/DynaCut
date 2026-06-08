@@ -1,0 +1,37 @@
+[
+  {
+    "method": "SLSQP",
+    "optimal_energy": 8.338263624785291e-06,
+    "num_evaluations": 247,
+    "time": 20.276341438293457,
+    "seed": 0
+  },
+  {
+    "method": "SLSQP",
+    "optimal_energy": 6.364444231077293e-06,
+    "num_evaluations": 333,
+    "time": 35.67117881774902,
+    "seed": 1
+  },
+  {
+    "method": "SLSQP",
+    "optimal_energy": 9.733328205974168e-06,
+    "num_evaluations": 249,
+    "time": 25.32995367050171,
+    "seed": 2
+  },
+  {
+    "method": "SLSQP",
+    "optimal_energy": 2.1857020403082128e-05,
+    "num_evaluations": 249,
+    "time": 23.08022451400757,
+    "seed": 3
+  },
+  {
+    "method": "SLSQP",
+    "optimal_energy": 1.5637666250678528e-05,
+    "num_evaluations": 251,
+    "time": 26.029380559921265,
+    "seed": 4
+  }
+]

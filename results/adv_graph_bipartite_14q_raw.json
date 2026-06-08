@@ -1,0 +1,122 @@
+[
+  {
+    "topology": "bipartite",
+    "num_qubits": 14,
+    "seed": 0,
+    "exact_energy": 6.999999999999951,
+    "e_cut": 24.046640058436,
+    "error": 17.04664005843605,
+    "cuts": 3,
+    "cut_weight": 3.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "bipartite",
+    "num_qubits": 14,
+    "seed": 1,
+    "exact_energy": 7.000000000000014,
+    "e_cut": 24.768411513892,
+    "error": 17.768411513891987,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "bipartite",
+    "num_qubits": 14,
+    "seed": 2,
+    "exact_energy": 7.0000000000000515,
+    "e_cut": 24.277366271877,
+    "error": 17.27736627187695,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "bipartite",
+    "num_qubits": 14,
+    "seed": 3,
+    "exact_energy": 7.000000000000007,
+    "e_cut": 23.710555169159,
+    "error": 16.710555169158994,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "bipartite",
+    "num_qubits": 14,
+    "seed": 4,
+    "exact_energy": 7.000000000000011,
+    "e_cut": 23.275335651259,
+    "error": 16.275335651258988,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "bipartite",
+    "num_qubits": 14,
+    "seed": 5,
+    "exact_energy": 7.0000000000000036,
+    "e_cut": 25.30631316262,
+    "error": 18.306313162619997,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "bipartite",
+    "num_qubits": 14,
+    "seed": 6,
+    "exact_energy": 6.999999999999995,
+    "e_cut": 23.913486869814,
+    "error": 16.913486869814008,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "bipartite",
+    "num_qubits": 14,
+    "seed": 7,
+    "exact_energy": 7.0000000000000195,
+    "e_cut": 24.632278101852,
+    "error": 17.63227810185198,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "bipartite",
+    "num_qubits": 14,
+    "seed": 8,
+    "exact_energy": 7.0000000000000036,
+    "e_cut": 24.79099476068,
+    "error": 17.790994760679997,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "bipartite",
+    "num_qubits": 14,
+    "seed": 9,
+    "exact_energy": 6.999999999999998,
+    "e_cut": 24.661349288244,
+    "error": 17.661349288244004,
+    "cuts": 3,
+    "cut_weight": 3.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  }
+]

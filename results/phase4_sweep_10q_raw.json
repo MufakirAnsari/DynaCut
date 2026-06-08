@@ -1,0 +1,57 @@
+[
+  {
+    "qubits": 10,
+    "cuts": 0,
+    "fragments": 1,
+    "hypervisor_time": 0.0001087188720703125,
+    "execution_time": 0.009420394897460938,
+    "vram_bound_mb": 0.08608245849609375,
+    "exact_vram_mb": 0.015625,
+    "energy": 0.019052114911016438,
+    "seed": 0
+  },
+  {
+    "qubits": 10,
+    "cuts": 0,
+    "fragments": 1,
+    "hypervisor_time": 4.029273986816406e-05,
+    "execution_time": 0.006879091262817383,
+    "vram_bound_mb": 0.07245254516601562,
+    "exact_vram_mb": 0.015625,
+    "energy": 0.07058135253482128,
+    "seed": 1
+  },
+  {
+    "qubits": 10,
+    "cuts": 0,
+    "fragments": 1,
+    "hypervisor_time": 3.0040740966796875e-05,
+    "execution_time": 0.006631374359130859,
+    "vram_bound_mb": 0.07241439819335938,
+    "exact_vram_mb": 0.015625,
+    "energy": 0.03331584891565009,
+    "seed": 2
+  },
+  {
+    "qubits": 10,
+    "cuts": 0,
+    "fragments": 1,
+    "hypervisor_time": 3.170967102050781e-05,
+    "execution_time": 0.006728410720825195,
+    "vram_bound_mb": 0.07231712341308594,
+    "exact_vram_mb": 0.015625,
+    "energy": 0.026712629796723064,
+    "seed": 3
+  },
+  {
+    "qubits": 10,
+    "cuts": 0,
+    "fragments": 1,
+    "hypervisor_time": 3.695487976074219e-05,
+    "execution_time": 0.0063457489013671875,
+    "vram_bound_mb": 0.07165145874023438,
+    "exact_vram_mb": 0.015625,
+    "energy": 0.02223441212197519,
+    "seed": 4
+  }
+]

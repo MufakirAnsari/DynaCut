@@ -1,0 +1,37 @@
+[
+  {
+    "method": "L-BFGS-B",
+    "optimal_energy": 8.311238645364316e-06,
+    "num_evaluations": 328,
+    "time": 26.575322151184082,
+    "seed": 0
+  },
+  {
+    "method": "L-BFGS-B",
+    "optimal_energy": 1.7658866745762225e-05,
+    "num_evaluations": 328,
+    "time": 33.79418921470642,
+    "seed": 1
+  },
+  {
+    "method": "L-BFGS-B",
+    "optimal_energy": 9.794237768478986e-06,
+    "num_evaluations": 328,
+    "time": 32.45084261894226,
+    "seed": 2
+  },
+  {
+    "method": "L-BFGS-B",
+    "optimal_energy": 2.172632816321851e-05,
+    "num_evaluations": 328,
+    "time": 27.77855610847473,
+    "seed": 3
+  },
+  {
+    "method": "L-BFGS-B",
+    "optimal_energy": 1.5543988110267026e-05,
+    "num_evaluations": 328,
+    "time": 33.34699749946594,
+    "seed": 4
+  }
+]

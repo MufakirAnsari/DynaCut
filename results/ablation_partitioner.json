@@ -1,0 +1,38 @@
+[
+    {
+        "qubits": 10,
+        "random": {
+            "mean_cuts": 6.6
+        },
+        "metis": {
+            "mean_cuts": 0.0
+        },
+        "kl_bisection": {
+            "mean_cuts": 3.8
+        }
+    },
+    {
+        "qubits": 14,
+        "random": {
+            "mean_cuts": 14.2
+        },
+        "metis": {
+            "mean_cuts": 0.0
+        },
+        "kl_bisection": {
+            "mean_cuts": 7.2
+        }
+    },
+    {
+        "qubits": 18,
+        "random": {
+            "mean_cuts": 21.3
+        },
+        "metis": {
+            "mean_cuts": 0.0
+        },
+        "kl_bisection": {
+            "mean_cuts": 14.8
+        }
+    }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "num_qubits": 10,
+    "noise_rate": 0.0001,
+    "exact_energy": 0.0,
+    "e_noisy_uncut": 9.8249,
+    "e_noisy_cut": 9.803247639999991,
+    "error_uncut": 9.8249,
+    "error_cut": 9.803247639999991,
+    "cuts": 1,
+    "seed": 0
+  },
+  {
+    "num_qubits": 10,
+    "noise_rate": 0.0001,
+    "exact_energy": 0.0,
+    "e_noisy_uncut": 10.4757,
+    "e_noisy_cut": 10.367213794999989,
+    "error_uncut": 10.4757,
+    "error_cut": 10.367213794999989,
+    "cuts": 1,
+    "seed": 1
+  },
+  {
+    "num_qubits": 10,
+    "noise_rate": 0.0001,
+    "exact_energy": 0.0,
+    "e_noisy_uncut": 10.2794,
+    "e_noisy_cut": 10.360934634999996,
+    "error_uncut": 10.2794,
+    "error_cut": 10.360934634999996,
+    "cuts": 1,
+    "seed": 2
+  },
+  {
+    "num_qubits": 10,
+    "noise_rate": 0.0001,
+    "exact_energy": 0.0,
+    "e_noisy_uncut": 10.8859,
+    "e_noisy_cut": 10.873827504999992,
+    "error_uncut": 10.8859,
+    "error_cut": 10.873827504999992,
+    "cuts": 1,
+    "seed": 3
+  },
+  {
+    "num_qubits": 10,
+    "noise_rate": 0.0001,
+    "exact_energy": 0.0,
+    "e_noisy_uncut": 7.2433,
+    "e_noisy_cut": 7.2665086149999984,
+    "error_uncut": 7.2433,
+    "error_cut": 7.2665086149999984,
+    "cuts": 1,
+    "seed": 4
+  },
+  {
+    "num_qubits": 10,
+    "noise_rate": 0.0001,
+    "exact_energy": 0.0,
+    "e_noisy_uncut": 11.5139,
+    "e_noisy_cut": 11.660095254999996,
+    "error_uncut": 11.5139,
+    "error_cut": 11.660095254999996,
+    "cuts": 1,
+    "seed": 5
+  },
+  {
+    "num_qubits": 10,
+    "noise_rate": 0.0001,
+    "exact_energy": 0.0,
+    "e_noisy_uncut": 12.081199999999999,
+    "e_noisy_cut": 12.189442444999985,
+    "error_uncut": 12.081199999999999,
+    "error_cut": 12.189442444999985,
+    "cuts": 1,
+    "seed": 6
+  },
+  {
+    "num_qubits": 10,
+    "noise_rate": 0.0001,
+    "exact_energy": 0.0,
+    "e_noisy_uncut": 11.2294,
+    "e_noisy_cut": 11.317560509999996,
+    "error_uncut": 11.2294,
+    "error_cut": 11.317560509999996,
+    "cuts": 1,
+    "seed": 7
+  },
+  {
+    "num_qubits": 10,
+    "noise_rate": 0.0001,
+    "exact_energy": 0.0,
+    "e_noisy_uncut": 15.3691,
+    "e_noisy_cut": 15.195195279999993,
+    "error_uncut": 15.3691,
+    "error_cut": 15.195195279999993,
+    "cuts": 1,
+    "seed": 8
+  },
+  {
+    "num_qubits": 10,
+    "noise_rate": 0.0001,
+    "exact_energy": 0.0,
+    "e_noisy_uncut": 9.4258,
+    "e_noisy_cut": 9.289249389999993,
+    "error_uncut": 9.4258,
+    "error_cut": 9.289249389999993,
+    "cuts": 1,
+    "seed": 9
+  }
+]

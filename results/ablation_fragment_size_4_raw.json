@@ -1,0 +1,42 @@
+[
+  {
+    "max_fragment_size": 4,
+    "cuts": 15,
+    "time": 0.001417398452758789,
+    "fragments": 6,
+    "ram_gb": 8.0,
+    "seed": 0
+  },
+  {
+    "max_fragment_size": 4,
+    "cuts": 19,
+    "time": 0.003880023956298828,
+    "fragments": 6,
+    "ram_gb": 23.0,
+    "seed": 1
+  },
+  {
+    "max_fragment_size": 4,
+    "cuts": 18,
+    "time": 0.003865957260131836,
+    "fragments": 6,
+    "ram_gb": 23.0,
+    "seed": 2
+  },
+  {
+    "max_fragment_size": 4,
+    "cuts": 15,
+    "time": 0.0009789466857910156,
+    "fragments": 6,
+    "ram_gb": 8.0,
+    "seed": 3
+  },
+  {
+    "max_fragment_size": 4,
+    "cuts": 23,
+    "time": 0.003966808319091797,
+    "fragments": 6,
+    "ram_gb": 23.0,
+    "seed": 4
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "problem": "h2",
+    "ansatz_type": "he",
+    "num_qubits": 4,
+    "exact_energy": -1.129649537609825,
+    "e_cut": 0.18916765391716833,
+    "error": 1.3188171915269933,
+    "cuts": 1,
+    "time": 1.2569715976715088,
+    "seed": 0
+  },
+  {
+    "problem": "h2",
+    "ansatz_type": "he",
+    "num_qubits": 4,
+    "exact_energy": -1.129649537609825,
+    "e_cut": -0.39954931647880826,
+    "error": 0.7301002211310168,
+    "cuts": 1,
+    "time": 1.6232190132141113,
+    "seed": 1
+  },
+  {
+    "problem": "h2",
+    "ansatz_type": "he",
+    "num_qubits": 4,
+    "exact_energy": -1.129649537609825,
+    "e_cut": -0.3206783934734342,
+    "error": 0.8089711441363908,
+    "cuts": 1,
+    "time": 1.2392668724060059,
+    "seed": 2
+  },
+  {
+    "problem": "h2",
+    "ansatz_type": "he",
+    "num_qubits": 4,
+    "exact_energy": -1.129649537609825,
+    "e_cut": 0.05927594701651513,
+    "error": 1.1889254846263402,
+    "cuts": 1,
+    "time": 1.2651903629302979,
+    "seed": 3
+  },
+  {
+    "problem": "h2",
+    "ansatz_type": "he",
+    "num_qubits": 4,
+    "exact_energy": -1.129649537609825,
+    "e_cut": 0.20017373523581847,
+    "error": 1.3298232728456434,
+    "cuts": 1,
+    "time": 1.3165674209594727,
+    "seed": 4
+  },
+  {
+    "problem": "h2",
+    "ansatz_type": "he",
+    "num_qubits": 4,
+    "exact_energy": -1.129649537609825,
+    "e_cut": -0.6845918203895777,
+    "error": 0.44505771722024734,
+    "cuts": 1,
+    "time": 1.3658318519592285,
+    "seed": 5
+  },
+  {
+    "problem": "h2",
+    "ansatz_type": "he",
+    "num_qubits": 4,
+    "exact_energy": -1.129649537609825,
+    "e_cut": 0.013730529595263549,
+    "error": 1.1433800672050884,
+    "cuts": 1,
+    "time": 1.0683348178863525,
+    "seed": 6
+  },
+  {
+    "problem": "h2",
+    "ansatz_type": "he",
+    "num_qubits": 4,
+    "exact_energy": -1.129649537609825,
+    "e_cut": 0.04016434791064678,
+    "error": 1.1698138855204718,
+    "cuts": 1,
+    "time": 1.2726027965545654,
+    "seed": 7
+  },
+  {
+    "problem": "h2",
+    "ansatz_type": "he",
+    "num_qubits": 4,
+    "exact_energy": -1.129649537609825,
+    "e_cut": 0.2927537810886918,
+    "error": 1.4224033186985168,
+    "cuts": 1,
+    "time": 1.7439703941345215,
+    "seed": 8
+  },
+  {
+    "problem": "h2",
+    "ansatz_type": "he",
+    "num_qubits": 4,
+    "exact_energy": -1.129649537609825,
+    "e_cut": 0.02075456311797971,
+    "error": 1.1504041007278047,
+    "cuts": 1,
+    "time": 1.1174776554107666,
+    "seed": 9
+  }
+]

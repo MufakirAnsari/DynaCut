@@ -1,0 +1,26 @@
+[
+    {
+        "method": "COBYLA",
+        "mean_energy": 0.05835752445080637,
+        "mean_evals": 42.0,
+        "mean_time": 3.9921358585357667
+    },
+    {
+        "method": "Nelder-Mead",
+        "mean_energy": 0.07218932789451557,
+        "mean_evals": 71.0,
+        "mean_time": 6.672600555419922
+    },
+    {
+        "method": "SLSQP",
+        "mean_energy": 1.2386144543119481e-05,
+        "mean_evals": 265.8,
+        "mean_time": 26.077415800094606
+    },
+    {
+        "method": "L-BFGS-B",
+        "mean_energy": 1.4606931886618213e-05,
+        "mean_evals": 328.0,
+        "mean_time": 30.789181518554688
+    }
+]

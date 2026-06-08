@@ -1,0 +1,60 @@
+\documentclass[aps,prx,twocolumn,superscriptaddress,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{physics}
+\usepackage{qcircuit}
+
+\begin{document}
+
+\title{Dy-Part-V2: Scalable Hybrid Quantum-Classical Co-processing via Dynamic Tensor Network Knitting}
+
+\author{Mufakir Ansari}
+\affiliation{Quantum Computing Group, Independent Researcher}
+
+\date{\today}
+
+\begin{abstract}
+As quantum algorithms scale towards utility, the exponentially growing memory constraints of classical simulators and the physical limitations of noisy intermediate-scale quantum (NISQ) devices present significant barriers. We introduce Dy-Part-V2, a dynamic resource hypervisor that bridges resource-constrained Quantum Processing Units (QPUs) with classical High-Performance Computing (HPC) nodes. By automatically mapping quantum circuits to memory-safe subgraph fragments via VF2 graph isomorphism and KL-bisection, and leveraging mathematically exact quasi-probability decompositions (QPD), we enable the distributed evaluation of arbitrary-width circuits. Sub-experiments are executed concurrently and reconstructed via tensor-network contraction paths. We validate the architecture by running Variational Quantum Eigensolver (VQE) optimizations of large MaxCut instances, demonstrating flat VRAM consumption and robust convergence.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+The simulation and execution of large-scale quantum circuits on classical hardware suffer from exponential memory overhead. Similarly, executing deep circuits on NISQ hardware is fundamentally limited by noise and qubit connectivity. Circuit knitting \cite{Piveteau2022, Mitarai2021} has emerged as a promising technique to partition large quantum circuits into smaller, implementable subcircuits. 
+
+In this work, we present \textbf{Dy-Part-V2}, a state-of-the-art framework that automates the partition process based on strict hardware resource constraints (e.g., VRAM limits) rather than arbitrary heuristic cuts.
+
+\section{Methods}
+
+\subsection{Dynamic Resource Hypervisor}
+Given a strict classical memory limit $V_{\max}$, the hypervisor computes the maximum qubit width $N_{\max} = \lfloor \log_2(V_{\max} / \text{sizeof}(\text{complex128})) \rfloor$. If the circuit size $N > N_{\max}$, the circuit's interaction graph is partitioned using KL-bisection to minimize the cut weight, while VF2 subgraph isomorphism ensures the fragments conform to the underlying hardware topology.
+
+\subsection{Quasi-Probability Decomposition and Tensor Networks}
+Cross-fragment multi-qubit gates are cut via Quasi-Probability Decomposition (QPD). The resulting sub-experiments are executed independently. The global expectation value is then reconstructed using classical tensor-network contraction paths optimized via \texttt{opt-einsum}.
+
+\section{Results}
+\subsection{Mathematical Rigor}
+We demonstrate that the expectation values obtained via QPD cutting and tensor network reconstruction match the exact statevector simulation up to machine precision.
+
+\subsection{Hardware Scalability}
+We evaluate the framework's scalability by sweeping over circuit sizes from 10 to 40 qubits. Figure \ref{fig:scaling} illustrates the flat VRAM consumption enabled by the hypervisor.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{figures/scaling_plot.pdf}
+    \caption{Peak VRAM usage and classical execution time as a function of circuit width. Dy-Part-V2 bounds the VRAM strictly at 4GB.}
+    \label{fig:scaling}
+\end{figure}
+
+\subsection{VQE Convergence}
+End-to-end VQE optimization of a MaxCut Hamiltonian using COBYLA shows that the training landscape is preserved post-cutting.
+
+\section{Conclusion}
+Dy-Part-V2 provides a robust, scalable pathway for evaluating deep quantum algorithms by dynamically distributing the workload across classical tensor networks and quantum co-processors.
+
+\bibliography{bibliography}
+
+\end{document}

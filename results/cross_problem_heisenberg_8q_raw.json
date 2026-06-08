@@ -1,0 +1,102 @@
+[
+  {
+    "problem": "heisenberg",
+    "num_qubits": 8,
+    "exact_energy": -13.49973039475157,
+    "e_cut": -1.6602425764692226,
+    "error": 11.839487818282347,
+    "cuts": 1,
+    "time": 1.342212200164795,
+    "seed": 0
+  },
+  {
+    "problem": "heisenberg",
+    "num_qubits": 8,
+    "exact_energy": -13.49973039475157,
+    "e_cut": -0.506929881327924,
+    "error": 12.992800513423646,
+    "cuts": 1,
+    "time": 1.3519678115844727,
+    "seed": 1
+  },
+  {
+    "problem": "heisenberg",
+    "num_qubits": 8,
+    "exact_energy": -13.49973039475157,
+    "e_cut": 0.19717748477419722,
+    "error": 13.696907879525767,
+    "cuts": 1,
+    "time": 1.2979025840759277,
+    "seed": 2
+  },
+  {
+    "problem": "heisenberg",
+    "num_qubits": 8,
+    "exact_energy": -13.49973039475157,
+    "e_cut": 2.0704547281914256,
+    "error": 15.570185122942995,
+    "cuts": 1,
+    "time": 1.4455163478851318,
+    "seed": 3
+  },
+  {
+    "problem": "heisenberg",
+    "num_qubits": 8,
+    "exact_energy": -13.49973039475157,
+    "e_cut": -0.11859963151228234,
+    "error": 13.381130763239288,
+    "cuts": 1,
+    "time": 2.1592960357666016,
+    "seed": 4
+  },
+  {
+    "problem": "heisenberg",
+    "num_qubits": 8,
+    "exact_energy": -13.49973039475157,
+    "e_cut": -1.7822482425862296,
+    "error": 11.71748215216534,
+    "cuts": 1,
+    "time": 1.4244122505187988,
+    "seed": 5
+  },
+  {
+    "problem": "heisenberg",
+    "num_qubits": 8,
+    "exact_energy": -13.49973039475157,
+    "e_cut": -0.7386130534730162,
+    "error": 12.761117341278553,
+    "cuts": 1,
+    "time": 1.7015244960784912,
+    "seed": 6
+  },
+  {
+    "problem": "heisenberg",
+    "num_qubits": 8,
+    "exact_energy": -13.49973039475157,
+    "e_cut": 1.5059421886611528,
+    "error": 15.005672583412723,
+    "cuts": 1,
+    "time": 1.454979419708252,
+    "seed": 7
+  },
+  {
+    "problem": "heisenberg",
+    "num_qubits": 8,
+    "exact_energy": -13.49973039475157,
+    "e_cut": -2.1333526769098174,
+    "error": 11.366377717841752,
+    "cuts": 1,
+    "time": 1.8869965076446533,
+    "seed": 8
+  },
+  {
+    "problem": "heisenberg",
+    "num_qubits": 8,
+    "exact_energy": -13.49973039475157,
+    "e_cut": -1.0771808235060871,
+    "error": 12.422549571245483,
+    "cuts": 1,
+    "time": 1.4974699020385742,
+    "seed": 9
+  }
+]

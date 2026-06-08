@@ -1,0 +1,92 @@
+[
+  {
+    "num_qubits": 14,
+    "num_samples": 10000,
+    "exact_energy": 3.0000000000000027,
+    "e_cut": 20.748622145322805,
+    "error_cut": 17.748622145322802,
+    "cuts": 1,
+    "seed": 0
+  },
+  {
+    "num_qubits": 14,
+    "num_samples": 10000,
+    "exact_energy": 3.000000000000008,
+    "e_cut": 20.374905947801306,
+    "error_cut": 17.3749059478013,
+    "cuts": 1,
+    "seed": 1
+  },
+  {
+    "num_qubits": 14,
+    "num_samples": 10000,
+    "exact_energy": 3.9999999999999964,
+    "e_cut": 21.83572267291848,
+    "error_cut": 17.835722672918482,
+    "cuts": 1,
+    "seed": 2
+  },
+  {
+    "num_qubits": 14,
+    "num_samples": 10000,
+    "exact_energy": 2.999999999999997,
+    "e_cut": 21.021586378677554,
+    "error_cut": 18.021586378677558,
+    "cuts": 1,
+    "seed": 3
+  },
+  {
+    "num_qubits": 14,
+    "num_samples": 10000,
+    "exact_energy": 3.999999999999992,
+    "e_cut": 20.71712054877267,
+    "error_cut": 16.717120548772677,
+    "cuts": 1,
+    "seed": 4
+  },
+  {
+    "num_qubits": 14,
+    "num_samples": 10000,
+    "exact_energy": 4.999999999999966,
+    "e_cut": 22.660995659244715,
+    "error_cut": 17.660995659244747,
+    "cuts": 1,
+    "seed": 5
+  },
+  {
+    "num_qubits": 14,
+    "num_samples": 10000,
+    "exact_energy": 2.9999999999999996,
+    "e_cut": -0.23754023671232669,
+    "error_cut": 3.2375402367123263,
+    "cuts": 3,
+    "seed": 6
+  },
+  {
+    "num_qubits": 14,
+    "num_samples": 10000,
+    "exact_energy": 3.999999999999986,
+    "e_cut": 19.682376897553123,
+    "error_cut": 15.682376897553137,
+    "cuts": 3,
+    "seed": 7
+  },
+  {
+    "num_qubits": 14,
+    "num_samples": 10000,
+    "exact_energy": 6.000000000000004,
+    "e_cut": 28.651782482484105,
+    "error_cut": 22.6517824824841,
+    "cuts": 1,
+    "seed": 8
+  },
+  {
+    "num_qubits": 14,
+    "num_samples": 10000,
+    "exact_energy": 2.9999999999999827,
+    "e_cut": 18.53644342021425,
+    "error_cut": 15.536443420214269,
+    "cuts": 1,
+    "seed": 9
+  }
+]

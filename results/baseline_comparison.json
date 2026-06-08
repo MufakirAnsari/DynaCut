@@ -1,0 +1,130 @@
+[
+  {
+    "method": "Statevector",
+    "qubits": 10,
+    "energy": 9.612184118678288,
+    "time": 0.002833843231201172,
+    "error": 0.0,
+    "cuts": 0
+  },
+  {
+    "method": "Raw Cutting",
+    "qubits": 10,
+    "energy": 9.612184118678245,
+    "time": 4.934520959854126,
+    "error": 4.263256414560601e-14,
+    "cuts": 3
+  },
+  {
+    "method": "Random Partitioning",
+    "qubits": 10,
+    "energy": NaN,
+    "time": 0.0,
+    "error": NaN,
+    "cuts": 5
+  },
+  {
+    "method": "MPS (bond=64)",
+    "qubits": 10,
+    "energy": NaN,
+    "time": 0.0,
+    "error": NaN,
+    "cuts": 0
+  },
+  {
+    "method": "Aer Noise Model",
+    "qubits": 10,
+    "energy": 9.5836,
+    "time": 0.5030858516693115,
+    "error": 0.02858411867828714,
+    "cuts": 0
+  },
+  {
+    "method": "METIS Partitioning",
+    "qubits": 10,
+    "energy": NaN,
+    "time": 0.0,
+    "error": NaN,
+    "cuts": 0
+  },
+  {
+    "method": "CutQC (Simulated)",
+    "qubits": 10,
+    "energy": 9.61218411867828,
+    "time": 0.19884657859802246,
+    "error": 7.105427357601002e-15,
+    "cuts": 0
+  },
+  {
+    "method": "Dy-Part-V2 (TN Exact)",
+    "qubits": 10,
+    "energy": 9.612184118678242,
+    "time": 5.058401346206665,
+    "error": 4.618527782440651e-14,
+    "cuts": 3
+  },
+  {
+    "method": "Statevector",
+    "qubits": 14,
+    "energy": 15.660924849346898,
+    "time": 0.011819601058959961,
+    "error": 0.0,
+    "cuts": 0
+  },
+  {
+    "method": "Raw Cutting",
+    "qubits": 14,
+    "energy": 15.660924849346817,
+    "time": 17.785166025161743,
+    "error": 8.171241461241152e-14,
+    "cuts": 3
+  },
+  {
+    "method": "Random Partitioning",
+    "qubits": 14,
+    "energy": NaN,
+    "time": 0.0,
+    "error": NaN,
+    "cuts": 6
+  },
+  {
+    "method": "MPS (bond=64)",
+    "qubits": 14,
+    "energy": NaN,
+    "time": 0.0,
+    "error": NaN,
+    "cuts": 0
+  },
+  {
+    "method": "Aer Noise Model",
+    "qubits": 14,
+    "energy": 15.6489,
+    "time": 6.5644519329071045,
+    "error": 0.012024849346898847,
+    "cuts": 0
+  },
+  {
+    "method": "METIS Partitioning",
+    "qubits": 14,
+    "energy": NaN,
+    "time": 0.0,
+    "error": NaN,
+    "cuts": 0
+  },
+  {
+    "method": "CutQC (Simulated)",
+    "qubits": 14,
+    "energy": 15.660924849347015,
+    "time": 8.433390617370605,
+    "error": 1.1723955140041653e-13,
+    "cuts": 0
+  },
+  {
+    "method": "Dy-Part-V2 (TN Exact)",
+    "qubits": 14,
+    "energy": 15.66092484934682,
+    "time": 18.076041221618652,
+    "error": 7.815970093361102e-14,
+    "cuts": 3
+  }
+]

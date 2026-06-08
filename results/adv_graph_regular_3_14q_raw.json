@@ -1,0 +1,122 @@
+[
+  {
+    "topology": "regular_3",
+    "num_qubits": 14,
+    "seed": 0,
+    "exact_energy": 2.9999999999999973,
+    "e_cut": 10.714804460182,
+    "error": 7.714804460182003,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "regular_3",
+    "num_qubits": 14,
+    "seed": 1,
+    "exact_energy": 3.000000000000001,
+    "e_cut": 10.624632414514,
+    "error": 7.624632414513999,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "regular_3",
+    "num_qubits": 14,
+    "seed": 2,
+    "exact_energy": 2.000000000000008,
+    "e_cut": 10.647740652499,
+    "error": 8.647740652498992,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "regular_3",
+    "num_qubits": 14,
+    "seed": 3,
+    "exact_energy": 1.9999999999999956,
+    "e_cut": 10.649985350563,
+    "error": 8.649985350563004,
+    "cuts": 3,
+    "cut_weight": 3.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "regular_3",
+    "num_qubits": 14,
+    "seed": 4,
+    "exact_energy": 0.9999999999999942,
+    "e_cut": 9.734987153774,
+    "error": 8.734987153774005,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "regular_3",
+    "num_qubits": 14,
+    "seed": 5,
+    "exact_energy": 2.9999999999999902,
+    "e_cut": 10.299464865598,
+    "error": 7.2994648655980106,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "regular_3",
+    "num_qubits": 14,
+    "seed": 6,
+    "exact_energy": 2.999999999999994,
+    "e_cut": 10.082172683847,
+    "error": 7.0821726838470065,
+    "cuts": 3,
+    "cut_weight": 3.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "regular_3",
+    "num_qubits": 14,
+    "seed": 7,
+    "exact_energy": 2.999999999999993,
+    "e_cut": 9.92606523452,
+    "error": 6.926065234520006,
+    "cuts": 3,
+    "cut_weight": 3.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "regular_3",
+    "num_qubits": 14,
+    "seed": 8,
+    "exact_energy": 3.000000000000002,
+    "e_cut": 10.166021602751,
+    "error": 7.166021602750998,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "regular_3",
+    "num_qubits": 14,
+    "seed": 9,
+    "exact_energy": 1.9999999999999951,
+    "e_cut": 11.160434324959,
+    "error": 9.160434324959006,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  }
+]

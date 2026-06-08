@@ -1,0 +1,30 @@
+[
+    {
+        "qubits": 10,
+        "mean_execution_time": 0.007201004028320313,
+        "mean_cuts": 0.0,
+        "mean_vram_mb": 0.07498359680175781,
+        "exact_vram_mb": 0.015625
+    },
+    {
+        "qubits": 12,
+        "mean_execution_time": 0.009073543548583984,
+        "mean_cuts": 0.0,
+        "mean_vram_mb": 0.26001968383789065,
+        "exact_vram_mb": 0.0625
+    },
+    {
+        "qubits": 14,
+        "mean_execution_time": 0.015722274780273438,
+        "mean_cuts": 0.0,
+        "mean_vram_mb": 1.0100822448730469,
+        "exact_vram_mb": 0.25
+    },
+    {
+        "qubits": 16,
+        "mean_execution_time": 1.5150391101837157,
+        "mean_cuts": 1.0,
+        "mean_vram_mb": 3.2429813385009765,
+        "exact_vram_mb": 1.0
+    }
+]

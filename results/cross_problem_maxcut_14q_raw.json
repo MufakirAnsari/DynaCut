@@ -1,0 +1,102 @@
+[
+  {
+    "problem": "maxcut",
+    "num_qubits": 14,
+    "exact_energy": 2.9999999999999942,
+    "e_cut": 20.74862214532279,
+    "error": 17.7486221453228,
+    "cuts": 1,
+    "time": 7.4697253704071045,
+    "seed": 0
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 14,
+    "exact_energy": 3.0000000000000098,
+    "e_cut": 20.374905947801274,
+    "error": 17.374905947801263,
+    "cuts": 1,
+    "time": 7.775222063064575,
+    "seed": 1
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 14,
+    "exact_energy": 3.9999999999999902,
+    "e_cut": 21.835722672918447,
+    "error": 17.835722672918457,
+    "cuts": 1,
+    "time": 8.078614711761475,
+    "seed": 2
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 14,
+    "exact_energy": 2.99999999999999,
+    "e_cut": 21.021586378683658,
+    "error": 18.02158637868367,
+    "cuts": 3,
+    "time": 16175.488328933716,
+    "seed": 3
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 14,
+    "exact_energy": 3.9999999999999885,
+    "e_cut": 20.717120548772648,
+    "error": 16.71712054877266,
+    "cuts": 1,
+    "time": 3.7599871158599854,
+    "seed": 4
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 14,
+    "exact_energy": 4.999999999999995,
+    "e_cut": 22.660995659251306,
+    "error": 17.660995659251313,
+    "cuts": 3,
+    "time": 14856.413421869278,
+    "seed": 5
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 14,
+    "exact_energy": 2.9999999999999947,
+    "e_cut": 19.92913555486223,
+    "error": 16.929135554862235,
+    "cuts": 3,
+    "time": 13846.127085924149,
+    "seed": 6
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 14,
+    "exact_energy": 4.000000000000002,
+    "e_cut": 22.080388409725217,
+    "error": 18.080388409725217,
+    "cuts": 1,
+    "time": 2.3780267238616943,
+    "seed": 7
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 14,
+    "exact_energy": 5.999999999999994,
+    "e_cut": 28.65178248248407,
+    "error": 22.651782482484077,
+    "cuts": 1,
+    "time": 2.3942933082580566,
+    "seed": 8
+  },
+  {
+    "problem": "maxcut",
+    "num_qubits": 14,
+    "exact_energy": 2.9999999999999964,
+    "e_cut": 18.536443420219562,
+    "error": 15.536443420219566,
+    "cuts": 3,
+    "time": 13615.14682674408,
+    "seed": 9
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "topology": "ring",
+    "num_qubits": 14,
+    "seed": 0,
+    "exact_energy": 1.9999999999999947,
+    "e_cut": 7.710011927646,
+    "error": 5.710011927646005,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "ring",
+    "num_qubits": 14,
+    "seed": 1,
+    "exact_energy": 1.9999999999999964,
+    "e_cut": 6.155587465521,
+    "error": 4.155587465521004,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "ring",
+    "num_qubits": 14,
+    "seed": 2,
+    "exact_energy": 1.9999999999999996,
+    "e_cut": 7.003808928346,
+    "error": 5.003808928346,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "ring",
+    "num_qubits": 14,
+    "seed": 3,
+    "exact_energy": 1.9999999999999942,
+    "e_cut": 6.960618336231,
+    "error": 4.960618336231006,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "ring",
+    "num_qubits": 14,
+    "seed": 4,
+    "exact_energy": 1.9999999999999982,
+    "e_cut": 6.666275069539,
+    "error": 4.666275069539002,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "ring",
+    "num_qubits": 14,
+    "seed": 5,
+    "exact_energy": 1.9999999999999925,
+    "e_cut": 7.496997948632,
+    "error": 5.496997948632007,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "ring",
+    "num_qubits": 14,
+    "seed": 6,
+    "exact_energy": 1.999999999999998,
+    "e_cut": 7.438380156258,
+    "error": 5.438380156258002,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "ring",
+    "num_qubits": 14,
+    "seed": 7,
+    "exact_energy": 2.000000000000003,
+    "e_cut": 7.010537809465,
+    "error": 5.0105378094649975,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "ring",
+    "num_qubits": 14,
+    "seed": 8,
+    "exact_energy": 2.0,
+    "e_cut": 7.532675192889,
+    "error": 5.532675192889,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  },
+  {
+    "topology": "ring",
+    "num_qubits": 14,
+    "seed": 9,
+    "exact_energy": 1.999999999999993,
+    "e_cut": 6.441174680365,
+    "error": 4.441174680365007,
+    "cuts": 1,
+    "cut_weight": 1.0,
+    "time_partition": 0.0,
+    "time_eval": 0.0
+  }
+]
