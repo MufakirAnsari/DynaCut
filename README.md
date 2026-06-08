@@ -87,10 +87,21 @@ DynaCut requires Python 3.9+ and relies heavily on the Qiskit ecosystem and adva
 
 ## Experimental Suite
 
-The `experiments/` directory contains an extensive suite of benchmarks, validation scripts, and rigorous mathematical proofs for the framework:
-- **`tn_pareto_real.py` & `tn_scaling_real.py`**: Demonstrate the real-world scalability and Pareto efficiency of the tensor-network reconstruction against naive baselines.
-- **`phase1_math_rigor.py` - `phase5_ibm_hardware.py`**: A structured validation pipeline proving mathematical equivalence, VQE convergence, and execution on real IBM Q hardware models.
-- **Ablation Studies**: Dedicated scripts (`ablation_depth.py`, `ablation_optimizer.py`, etc.) for isolating the performance impact of individual framework components.
+The `experiments/` directory contains an extensive suite of benchmarks, validation scripts, and rigorous mathematical proofs for the framework, completed across multiple agile Sprints:
+
+### 1. Scaling & Pareto Efficiency
+- **`tn_scaling_real.py`**: Benchmarks Exact vs. Approximate Tensor Network reconstruction on scaling qubit sizes (up to 26+ qubits). Demonstrates massive time/memory savings over naive reconstruction.
+- **`tn_pareto_real.py`**: Explores the Pareto frontier of approximation error vs. reconstruction time by sweeping the max bond dimension ($\chi$) in the SVD truncation.
+
+### 2. Robustness & Generalization
+- **`noise_impact.py` & `shot_noise.py`**: Validates the framework's stability under realistic QPU depolarizing noise and finite measurement shot noise.
+- **`cross_problem.py`**: Proves framework universality across diverse quantum Hamiltonians: MaxCut, Heisenberg, Transverse-Field Ising Model (TFIM), and H2 Chemistry.
+- **`cross_ansatz.py`**: Validates compatibility with different circuit types (QAOA, Hardware-Efficient, UCCSD heuristic).
+
+### 3. Ablation Studies & Edge Cases
+- **`ablation_depth.py` & `ablation_entanglement.py`**: Isolates the impact of ansatz layer depth and entanglement patterns (Linear, Circular, Spin-Conserving) on the QPD coefficient explosion and TN reconstruction fidelity.
+- **`ablation_optimizer.py`, `ablation_partitioner.py`, `ablation_fragment_size.py`**: Deep dives into classical optimizer choices (COBYLA, SLSQP, etc.), automated graph partitioners, and the effects of varying maximum hardware fragment sizes.
+- **`adversarial_graphs.py`**: Stress-tests the QPD overhead and topological embeddability on adversarial worst-case interaction graphs (Star, Complete, Ring, Bipartite).
 
 ## Development & Testing
 
