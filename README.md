@@ -10,7 +10,9 @@ The core scientific novelty of DynaCut lies in treating the classical post-proce
 
 ### 1. Quasi-Probability Decomposition (QPD)
 When a quantum wire connecting two sub-circuits $S_A$ and $S_B$ is severed, the quantum identity channel $\mathcal{I}$ on that wire is decomposed into a linear combination of physically realizable operations via QPD:
-$$ \mathcal{I} = \sum_{k=0}^{D-1} c_k \cdot (\mathcal{M}_k \otimes \mathcal{P}_k) $$
+```math
+\mathcal{I} = \sum_{k=0}^{D-1} c_k \cdot (\mathcal{M}_k \otimes \mathcal{P}_k)
+```
 Where:
 - $\mathcal{M}_k$ are measurement bases on the source sub-circuit $S_A$.
 - $\mathcal{P}_k$ are preparation bases on the target sub-circuit $S_B$.
@@ -24,14 +26,18 @@ If a sub-circuit has $N$ cut wires attached to it, $\mathcal{T}^{(S)}$ is constr
 
 ### 3. Global Reconstruction via Tensor Contraction
 The global expectation value $\langle \mathcal{O} \rangle$ of the original, uncut circuit is recovered by contracting the tensor network formed by all sub-circuit tensors and the QPD coefficients:
-$$ \langle \mathcal{O} \rangle = \sum_{i, j, k \dots} \left( c_i c_j c_k \dots \right) \mathcal{T}^{(S_1)}_{i, \dots} \mathcal{T}^{(S_2)}_{i, j, \dots} \dots $$
+```math
+\langle \mathcal{O} \rangle = \sum_{i, j, k \dots} \left( c_i c_j c_k \dots \right) \mathcal{T}^{(S_1)}_{i, \dots} \mathcal{T}^{(S_2)}_{i, j, \dots} \dots
+```
 This maps the quantum reconstruction directly to standard Einstein summation conventions.
 
 ### 4. SVD-Truncated Approximate Contraction
 For highly entangled or densely cut graphs, exact tensor contraction requires exponential memory. DynaCut solves this using **Truncated Singular Value Decomposition (SVD)** on intermediate contraction results. 
 
 When contracting two intermediate tensors $A$ and $B$, the exact contraction $M = A \cdot B$ is factorized:
-$$ M = U \Sigma V^\dagger $$
+```math
+M = U \Sigma V^\dagger
+```
 By retaining only the top $\chi$ singular values (the maximum bond dimension), we project the intermediate tensor into a lower-dimensional subspace:
 $$ M \approx U_\chi \Sigma_\chi V_\chi^\dagger $$
 This trades a tightly bounded approximation error for **exponential memory savings**, a capability impossible in naive QPD reconstruction.
@@ -98,3 +104,7 @@ python -m unittest discover tests/
 ## Contributing
 
 Contributions are welcome! If you have optimizations for the SVD truncation heuristics or support for new quantum hardware interfaces, please submit a pull request.
+
+## Cite
+
+**Author:** Mufakir Ansari
