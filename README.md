@@ -1,4 +1,4 @@
-# DynaCut (formerly Q-Forge)
+# DynaCut
 
 **DynaCut: A State-of-the-Art Hybrid Tensor-Network Quantum Circuit Knitting Framework**
 
