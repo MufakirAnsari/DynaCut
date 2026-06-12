@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dynacut"
+version = "0.1.0"
+description = "SOTA Hybrid Tensor-Network Quantum Circuit Knitting Framework"
+requires-python = ">=3.9"
+dependencies = [
+    "qiskit>=1.0.0",
+    "qiskit-aer>=0.14.0",
+    "qiskit-addon-cutting>=0.7.0",
+    "quimb>=1.8.2",
+    "opt-einsum>=3.3.0",
+    "networkx>=3.0",
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "kahypar",
+    "pyyaml"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0"
+]
+
+[tool.setuptools]
+packages = ["dynacut"]

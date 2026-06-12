@@ -1,4 +1,23 @@
+# AI planning and audit docs
+walkthrough.md
 implementation_plan.md
+task.md
+manuscript_audit.md
+manuscript_review_v2.md
+*review*.md
+*audit*.md
+*.log
+
+# Ignore the paper latex/raw files but KEEP the generated figures
+/paper/*
+!/paper/figures/
+/paper/figures.zip
+
+# Python typical
 __pycache__/
+*.pyc
+.env
+venv/
 .venv/
+.pytest_cache/
 *.egg-info/

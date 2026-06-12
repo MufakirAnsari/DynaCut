@@ -1,0 +1,38 @@
+graph TD
+    subgraph Classical Pre-Processing
+        A[Input Problem <br> e.g. MaxCut Graph] --> B[QAOA Ansatz Generator]
+        B --> C[Resource Scheduler]
+        C --> D{Is Exact RAM <br> within 256MB Limit?}
+        
+        D -- Yes --> E[Statevector / MPS <br> Exact Simulation]
+        D -- No --> F[KaHyPar Multi-level <br> Hypergraph Partitioner]
+        
+        F -->|Minimize cross-boundary <br> entanglement| G[Sub-circuits & <br> QPD Observables]
+        G --> H[Variance Bound <br> Dynamic Shot Scaler]
+    end
+
+    subgraph Quantum Execution
+        H --> I[Qiskit Aer <br> Noise Transpiler]
+        I --> J((Aer Simulator <br> FakeHeronV2))
+        J --> K[Execution Results & <br> Readout Twirling]
+    end
+
+    subgraph Classical Post-Processing
+        E --> L[Ground State Energy]
+        K --> M[Hybrid Tensor Network Knitter]
+        
+        M --> N{Is Exact Contraction <br> Tractable?}
+        N -- Yes --> O[Quimb Exact <br> Dense Contraction]
+        N -- No --> P[Quimb Approximate <br> SVD Truncation]
+        
+        O --> L
+        P --> L
+    end
+
+    classDef classic fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef quantum fill:#f3e5f5,stroke:#4a148c,stroke-width:2px;
+    classDef endpoint fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,font-weight:bold;
+
+    class A,B,C,D,E,F,G,H,M,N,O,P classic;
+    class I,J,K quantum;
+    class L endpoint;

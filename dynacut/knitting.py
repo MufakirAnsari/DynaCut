@@ -65,8 +65,8 @@ from qiskit_addon_cutting.cutting_experiments import _get_pauli_indices
 
 logger = logging.getLogger(__name__)
 
-# QPD basis size for single-qubit wire cuts (Pauli M&P decomposition)
-QPD_BASIS_SIZE = 4
+# QPD basis size for single-qubit# For CNOT/CX gate, the typical QPD basis size is 6.
+QPD_BASIS_SIZE = 6
 
 
 class HybridTensorNetworkKnitter:
@@ -99,6 +99,139 @@ class HybridTensorNetworkKnitter:
     # ------------------------------------------------------------------
     # Public API
     # ------------------------------------------------------------------
+
+    def from_cutting_graph(
+        self,
+        results: Dict[Any, Any],
+        observables: Any,
+        partition_keys: List[Any],
+        hamiltonian: Any,
+        cut_map: Dict[int, List[int]],
+        num_cuts: int,
+    ) -> float:
+        from qiskit_addon_cutting import reconstruct_expectation_values
+
+        num_groups = len(list(results.values())[0].metadata)
+        K = num_cuts
+
+        # Coefficients for QPD
+        coeff_values = np.zeros(num_groups)
+        for g in range(num_groups):
+            meta = list(results.values())[0].metadata[g]
+            coeff_values[g] = meta.get("weight", 1.0)
+        
+        coeff_values_nd = coeff_values.reshape([6] * K) if K > 0 else coeff_values
+
+        # Factorize joint weights into independent wires
+        coefficients = np.zeros((K, 6))
+        if K > 0:
+            for i in range(K):
+                slices = [0] * K
+                slices[i] = slice(None)
+                vec = coeff_values_nd[tuple(slices)]
+                if i > 0:
+                    vec = vec / coeff_values_nd[(0,)*K]
+                coefficients[i] = vec
+
+        # The 'observables' argument is actually subobservables.
+        subobservables = observables
+        num_obs = len(hamiltonian)
+        
+        from qiskit.quantum_info import PauliList
+        def bit_count(n):
+            return bin(n).count('1')
+        def _get_pauli_indices(cog):
+            indices = set()
+            for pauli in cog.commuting_observables:
+                for i, char in enumerate(reversed(pauli.to_label())):
+                    if char != 'I':
+                        indices.add(i)
+            return sorted(list(indices))
+
+        from qiskit_addon_cutting.cutting_reconstruction import ObservableCollection
+
+        subsystem_observables = {
+            label: ObservableCollection(subobs)
+            for label, subobs in subobservables.items()
+        }
+
+        frag_expvals: Dict[Any, List[np.ndarray]] = {
+            label: [] for label in partition_keys
+        }
+
+        for i in range(num_groups):
+            for label in partition_keys:
+                so = subsystem_observables[label]
+                subobs_list = subobservables[label]
+
+                subsystem_evs = [
+                    np.zeros(len(cog.commuting_observables))
+                    for cog in so.groups
+                ]
+
+                current_result = results[label]
+                for k, cog in enumerate(so.groups):
+                    idx = i * len(so.groups) + k
+                    # For SamplerV1 result, it has quasi_dists. For V2 it's different, but assuming V1 here.
+                    quasi_probs = current_result.quasi_dists[idx]
+                    num_meas_bits = len(_get_pauli_indices(cog))
+                    for outcome, quasi_prob in quasi_probs.items():
+                        obs_outcomes = outcome & ((1 << num_meas_bits) - 1)
+                        qpd_outcomes = outcome >> num_meas_bits
+                        qpd_factor = 1 - 2 * (bit_count(qpd_outcomes) & 1)
+
+                        for m, mask in enumerate(cog.pauli_bitmasks):
+                            obs = 1 - 2 * (bit_count(obs_outcomes & mask) & 1)
+                            subsystem_evs[k][m] += quasi_prob * qpd_factor * obs
+
+                per_obs = np.ones(num_obs)
+                for k_obs, subobservable in enumerate(subobs_list):
+                    per_obs[k_obs] = np.mean(
+                        [subsystem_evs[m][n_idx]
+                         for m, n_idx in so.lookup[subobservable]]
+                    )
+
+                frag_expvals[label].append(per_obs)
+
+        energy = 0.0
+
+        for obs_idx in range(num_obs):
+            fragment_results = {}
+            for label in partition_keys:
+                frag_data = np.array([frag_expvals[label][g][obs_idx] for g in range(num_groups)])
+                
+                if K > 0:
+                    frag_data_nd = frag_data.reshape([6] * K)
+                    wire_ids = cut_map.get(label, [])
+                    slices = []
+                    for w in range(K):
+                        if w in wire_ids:
+                            slices.append(slice(None))
+                        else:
+                            slices.append(0)
+                    fragment_results[label] = frag_data_nd[tuple(slices)]
+                else:
+                    fragment_results[label] = frag_data
+                    
+            tn = self.build_tensor_network(fragment_results, coefficients, cut_map)
+            
+            if self.max_bond is not None and K > 0:
+                try:
+                    res = tn.contract_compressed(max_bond=self.max_bond, optimize="greedy")
+                except Exception as e:
+                    logger.warning("Compression failed %s, falling back to exact", e)
+                    res = tn.contract(optimize="greedy")
+            else:
+                res = tn.contract(optimize="greedy")
+                
+            if hasattr(res, "data"):
+                val = float(np.real(np.asarray(res.data).ravel()[0]))
+            else:
+                val = float(np.real(res))
+                
+            energy += val
+
+        return energy
 
     def from_cutting_results(
         self,
@@ -176,9 +309,6 @@ class HybridTensorNetworkKnitter:
                 ))
 
             tn = qtn.TensorNetwork(tensors)
-            
-            # Using hyperedge contraction
-            cost_info = self.estimate_contraction_cost(tn)
             
             # Ensure max_bond from the knitter instance is used for approximate contraction
             # But currently we only do exact for hyperedges unless specified
@@ -354,7 +484,7 @@ class HybridTensorNetworkKnitter:
 
         # Extract scalar value
         if hasattr(result, "data"):
-            val = float(np.real(result.data.ravel()[0]))
+            val = float(np.real(np.asarray(result.data).ravel()[0]))
         elif isinstance(result, (np.ndarray,)):
             val = float(np.real(result.ravel()[0]))
         else:

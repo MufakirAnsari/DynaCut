@@ -1,0 +1,56 @@
+[
+    {
+        "num_qubits": 10,
+        "time_random": 6.619957275688648e-07,
+        "time_kl": 6.245799886528403e-05,
+        "time_dynacut_partitioner": 0.00025656500656623393
+    },
+    {
+        "num_qubits": 12,
+        "time_random": 4.999965312890708e-07,
+        "time_kl": 7.902999641373754e-05,
+        "time_dynacut_partitioner": 0.0003104269999312237
+    },
+    {
+        "num_qubits": 14,
+        "time_random": 5.720066837966442e-07,
+        "time_kl": 0.00011057899973820895,
+        "time_dynacut_partitioner": 0.0003903280012309551
+    },
+    {
+        "num_qubits": 16,
+        "time_random": 6.609989213757217e-07,
+        "time_kl": 0.0001363080009468831,
+        "time_dynacut_partitioner": 0.0005244310013949871
+    },
+    {
+        "num_qubits": 18,
+        "time_random": 6.210029823705554e-07,
+        "time_kl": 0.00014983300206949934,
+        "time_dynacut_partitioner": 0.0005690950056305155
+    },
+    {
+        "num_qubits": 20,
+        "time_random": 6.409973138943315e-07,
+        "time_kl": 0.00017512100021122023,
+        "time_dynacut_partitioner": 0.000679133998346515
+    },
+    {
+        "num_qubits": 22,
+        "time_random": 8.209972293116152e-07,
+        "time_kl": 0.0002073319992632605,
+        "time_dynacut_partitioner": 0.0008251690014731139
+    },
+    {
+        "num_qubits": 24,
+        "time_random": 7.519993232563138e-07,
+        "time_kl": 0.0002422480029053986,
+        "time_dynacut_partitioner": 0.0009205899987136945
+    },
+    {
+        "num_qubits": 26,
+        "time_random": 8.819988579489291e-07,
+        "time_kl": 0.000279688996670302,
+        "time_dynacut_partitioner": 0.0010575889973551966
+    }
+]

@@ -21,7 +21,21 @@ class ExperimentRunner:
         self.results_dir = results_dir
         os.makedirs(self.results_dir, exist_ok=True)
         
-    def run(self, experiment_fn: Callable[[int, Dict[str, Any]], Dict[str, Any]], config: Dict[str, Any]) -> Dict[str, Any]:
+        # Auto-load config.yaml
+        self.global_config = {}
+        config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "experiments", "config.yaml")
+        if os.path.exists(config_path):
+            import yaml
+            with open(config_path, "r") as f:
+                self.global_config = yaml.safe_load(f)
+                if "experiment_parameters" in self.global_config and "seeds" in self.global_config["experiment_parameters"] and seeds is None:
+                    self.seeds = self.global_config["experiment_parameters"]["seeds"]
+        
+    def run(self, experiment_fn: Callable[[int, Dict[str, Any]], Dict[str, Any]], config: Dict[str, Any] = None) -> Dict[str, Any]:
+        if config is None:
+            config = {}
+        # Merge global config into passed config
+        merged_config = {**self.global_config, **config}
         """
         Run the experiment function over all seeds.
         
@@ -39,24 +53,34 @@ class ExperimentRunner:
         """
         raw_results = []
         
-        # Check if already completed
+        # Check if already completed or partially completed
         stats_path = os.path.join(self.results_dir, f"{self.experiment_name}_stats.json")
         raw_path = os.path.join(self.results_dir, f"{self.experiment_name}_raw.json")
-        if os.path.exists(stats_path) and os.path.getsize(stats_path) > 10:
-            logger.info(f"Experiment '{self.experiment_name}' already completed. Skipping.")
+        
+        completed_seeds = set()
+        if os.path.exists(raw_path) and os.path.getsize(raw_path) > 10:
             try:
                 with open(raw_path, 'r') as f:
-                    raw_res = json.load(f)
-                with open(stats_path, 'r') as f:
-                    stats_res = json.load(f)
-                return {"raw": raw_res, "stats": stats_res}
+                    raw_results = json.load(f)
+                completed_seeds = {r.get("seed", -1) for r in raw_results}
             except json.JSONDecodeError:
-                logger.warning(f"Failed to load existing results for '{self.experiment_name}', re-running.")
+                logger.warning(f"Failed to load existing results for '{self.experiment_name}', starting fresh.")
+                raw_results = []
+                
+        if os.path.exists(stats_path) and os.path.getsize(stats_path) > 10 and len(completed_seeds) == len(self.seeds):
+            logger.info(f"Experiment '{self.experiment_name}' already fully completed. Skipping.")
+            with open(stats_path, 'r') as f:
+                stats_res = json.load(f)
+            return {"raw": raw_results, "stats": stats_res}
         
         logger.info(f"Starting experiment '{self.experiment_name}' with {len(self.seeds)} seeds.")
         t_start = time.time()
         
         for i, seed in enumerate(self.seeds):
+            if seed in completed_seeds:
+                logger.info(f"  [Seed {seed}] Already completed. Skipping. ({i+1}/{len(self.seeds)})")
+                continue
+                
             logger.info(f"  [Seed {seed}] Running... ({i+1}/{len(self.seeds)})")
             
             try:
@@ -70,6 +94,10 @@ class ExperimentRunner:
                 # Ensure seed is recorded in the result
                 result["seed"] = seed
                 raw_results.append(result)
+                
+                # Incrementally save to prevent data loss on crash
+                with open(raw_path, 'w') as f:
+                    json.dump(raw_results, f, indent=2)
                 
             except Exception as e:
                 logger.error(f"  [Seed {seed}] Failed with error: {e}", exc_info=True)

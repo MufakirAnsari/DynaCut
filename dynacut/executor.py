@@ -34,7 +34,7 @@ import quimb.tensor as qtn
 from scipy.optimize import minimize
 
 from qiskit import QuantumCircuit
-from qiskit.circuit.library import n_local
+from qiskit.circuit.library import n_local, QAOAAnsatz
 from qiskit.quantum_info import PauliList, SparsePauliOp, Statevector
 from qiskit.primitives import SamplerResult
 
@@ -44,6 +44,7 @@ from qiskit_addon_cutting import (
     reconstruct_expectation_values,
 )
 from qiskit_addon_cutting.utils.simulation import ExactSampler
+from dynacut.noise_mitigation import fold_circuit_global, linear_extrapolate
 from qiskit_addon_cutting.utils.observable_grouping import ObservableCollection
 from qiskit_addon_cutting.utils.bitwise import bit_count
 from qiskit_addon_cutting.cutting_experiments import _get_pauli_indices
@@ -127,8 +128,10 @@ class DynaCutExecutor:
         num_qubits: int,
         reps: int = 2,
         entanglement: str = "linear",
+        ansatz_type: str = "hardware_efficient",
+        hamiltonian: Optional[SparsePauliOp] = None,
     ) -> QuantumCircuit:
-        """Build a hardware-efficient ansatz using Ry-Rz + CZ.
+        """Build a parameterized ansatz for VQE.
 
         Parameters
         ----------
@@ -137,12 +140,25 @@ class DynaCutExecutor:
             Number of repetition layers.
         entanglement : str
             'linear', 'circular', 'full', 'sca', 'pairwise'.
+        ansatz_type : str
+            'hardware_efficient' (default 2-local) or 'qaoa'.
+        hamiltonian : SparsePauliOp, optional
+            Required if ansatz_type='qaoa'.
 
         Returns
         -------
         QuantumCircuit
             Parameterized (unbound) ansatz circuit.
         """
+        if ansatz_type == "qaoa":
+            if hamiltonian is None:
+                raise ValueError("QAOA ansatz requires the problem hamiltonian.")
+            # Map QAOA to target connectivity implicitly by relying on the Hamiltonian graph
+            ansatz = QAOAAnsatz(cost_operator=hamiltonian, reps=reps)
+            from qiskit import transpile
+            ansatz = transpile(ansatz, basis_gates=['cx', 'rx', 'ry', 'rz', 'u'])
+            return ansatz
+            
         ansatz = n_local(
             num_qubits,
             rotation_blocks=["ry", "rz"],
@@ -166,6 +182,7 @@ class DynaCutExecutor:
         num_samples: float = np.inf,
         reconstruction_method: str = "ibm",
         max_bond: Optional[int] = None,
+        options: Optional[dict] = None,
     ) -> float:
         """Evaluate ⟨ψ(θ)|H|ψ(θ)⟩.
 
@@ -206,7 +223,7 @@ class DynaCutExecutor:
             return self._cut_and_reconstruct_tn(
                 bound_circuit, hamiltonian, strategy, num_samples, max_bond
             )
-        return self._cut_and_reconstruct(bound_circuit, hamiltonian, strategy, num_samples)
+        return self._cut_and_reconstruct(bound_circuit, hamiltonian, strategy, options)
 
     def _direct_expectation(
         self,
@@ -222,16 +239,22 @@ class DynaCutExecutor:
         circuit: QuantumCircuit,
         hamiltonian: SparsePauliOp,
         strategy: CutStrategy,
-        num_samples: float = np.inf,
+        options: Optional[dict] = None,
     ) -> float:
-        """Execute the full cut → run → reconstruct pipeline.
+        """Execute the full cut → run → reconstruct pipeline with optional ZNE.
 
         This uses the proven-correct qiskit-addon-cutting workflow:
         1. partition_problem  (separates circuit at cut boundaries)
         2. generate_cutting_experiments  (generates QPD sub-experiments)
-        3. Run sub-experiments on ExactSampler  (handles mid-circuit QPD ops)
+        3. Run sub-experiments on ExactSampler (with optional folding)
         4. reconstruct_expectation_values  (weighted recombination)
         """
+        if options is None:
+            options = {}
+
+        use_zne = options.get("use_zne", False)
+        zne_scales = options.get("zne_scales", [1, 3, 5])
+
         # Convert Hamiltonian terms to PauliList for the cutting API
         observables = PauliList(hamiltonian.paulis)
 
@@ -246,11 +269,23 @@ class DynaCutExecutor:
             observables=observables,
         )
 
-        # 3. Generate cutting experiments (exact decomposition)
+        # 3. Generate cutting experiments (exact decomposition or sampled)
+        if options.get("dynamic_shots", False):
+            epsilon = options.get("epsilon", 0.05)
+            delta = options.get("delta", 0.01)
+            # Theoretical gamma upper bound for QPD: each cut adds a factor of 3 (for standard CZ/CX cutting)
+            gamma = 3 ** strategy.num_cuts
+            calculated_shots = int((gamma ** 2) / (2 * epsilon ** 2) * np.log(2 / delta))
+            # Cap the shots to a realistic experimental limit
+            num_samples = min(calculated_shots, 100_000)
+            logger.info("Dynamic Shot Scaling (Hoeffding's bound): Gamma=%.1f, req_shots=%d, capped=%d", gamma, calculated_shots, num_samples)
+        else:
+            num_samples = options.get("num_samples", np.inf)
+
         subexperiments, coefficients = generate_cutting_experiments(
             circuits=partitioned.subcircuits,
             observables=partitioned.subobservables,
-            num_samples=num_samples,  # Exact (np.inf) or sampled (int)
+            num_samples=num_samples,
         )
 
         logger.info(
@@ -258,28 +293,56 @@ class DynaCutExecutor:
             len(coefficients), len(subexperiments),
         )
 
-        # 4. Execute sub-experiments per partition
-        results = {}
-        for label, experiments in subexperiments.items():
-            logger.debug("Running %d experiments for partition %s", len(experiments), label)
-            results[label] = self._sampler.run(experiments).result()
+        # 4. Execute sub-experiments with ZNE loop
+        scale_results = []
+        
+        if not use_zne:
+            zne_scales = [1]
+            
+        for scale in zne_scales:
+            results = {}
+            for label, experiments in subexperiments.items():
+                logger.debug("Running %d experiments for partition %s at scale %d", len(experiments), label, scale)
+                
+                # Fold the experiments
+                folded_experiments = [fold_circuit_global(circ, scale) for circ in experiments]
+                
+                # Transpile for ISA if pass manager is provided
+                pm = options.get("isa_pass_manager", None)
+                if pm is not None:
+                    # Transpile in chunks to prevent OOM killed by OS
+                    chunk_size = 200
+                    transpiled_experiments = []
+                    for i in range(0, len(folded_experiments), chunk_size):
+                        chunk = folded_experiments[i:i+chunk_size]
+                        transpiled_experiments.extend(pm.run(chunk))
+                    folded_experiments = transpiled_experiments
+                
+                job = self._sampler.run(folded_experiments)
+                # In Qiskit Addon Cutting, reconstruct_expectation_values accepts both SamplerV1 and SamplerV2 results
+                results[label] = job.result()
 
-        # 5. Reconstruct expectation values
-        reconstructed = reconstruct_expectation_values(
-            results=results,
-            coefficients=coefficients,
-            observables=partitioned.subobservables,
-        )
+            # 5. Reconstruct expectation values for this scale
+            reconstructed = reconstruct_expectation_values(
+                results=results,
+                coefficients=coefficients,
+                observables=partitioned.subobservables,
+            )
 
-        # Combine with Hamiltonian coefficients:
-        # reconstructed[i] = ⟨P_i⟩ for each Pauli term P_i
-        # ⟨H⟩ = Σ_i c_i × ⟨P_i⟩
-        energy = float(np.real(
-            sum(c * ev for c, ev in zip(hamiltonian.coeffs, reconstructed))
-        ))
-
-        logger.info("Reconstructed energy (IBM): %.12f", energy)
-        return energy
+            energy = float(np.real(
+                sum(c * ev for c, ev in zip(hamiltonian.coeffs, reconstructed))
+            ))
+            scale_results.append(energy)
+            
+        # 6. Extrapolate to zero-noise
+        if use_zne and len(scale_results) > 1:
+            final_energy = linear_extrapolate(zne_scales, scale_results)
+            logger.info("ZNE Extrapolated energy: %.12f (from scales %s = %s)", final_energy, zne_scales, scale_results)
+        else:
+            final_energy = scale_results[0]
+            logger.info("Reconstructed energy (IBM): %.12f", final_energy)
+            
+        return final_energy
 
     def _cut_and_reconstruct_tn(
         self,
@@ -324,18 +387,44 @@ class DynaCutExecutor:
             num_groups, len(partition_keys),
         )
 
-        # 4. Execute sub-experiments per partition
-        results: Dict[Any, SamplerResult] = {}
-        for label, experiments in subexperiments.items():
-            results[label] = self._sampler.run(experiments).result()
+        # 4. Execute sub-experiments per partition (or use cache)
+        # Use a static string because the executor is uniquely instantiated per seed.
+        cache_key = "quantum_sim_cache_key"
+        if not hasattr(self, "_tn_cache"):
+            self._tn_cache = {}
+            
+        if cache_key in self._tn_cache:
+            results = self._tn_cache[cache_key]
+        else:
+            results: Dict[Any, SamplerResult] = {}
+            for label, experiments in subexperiments.items():
+                results[label] = self._sampler.run(experiments).result()
+            self._tn_cache[cache_key] = results
 
         # 5. Build and contract the TN using knitting module
-        knitter = HybridTensorNetworkKnitter(max_bond=max_bond if max_bond else 256)
-        energy = knitter.from_cutting_results(
+        knitter = HybridTensorNetworkKnitter(max_bond=max_bond)
+        
+        # Construct cut_map by identifying which fragments each cut touches
+        cut_map = {label: [] for label in partition_keys}
+        cut_idx = 0
+        for instruction in circuit.data:
+            if len(instruction.qubits) == 2:
+                q0 = circuit.find_bit(instruction.qubits[0]).index
+                q1 = circuit.find_bit(instruction.qubits[1]).index
+                frag0 = strategy.partition_labels[q0]
+                frag1 = strategy.partition_labels[q1]
+                if frag0 != frag1:
+                    cut_map[frag0].append(cut_idx)
+                    cut_map[frag1].append(cut_idx)
+                    cut_idx += 1
+
+        energy = knitter.from_cutting_graph(
             results=results,
-            coefficients=coefficients,
-            subobservables=partitioned.subobservables,
+            observables=partitioned.subobservables,
+            partition_keys=partition_keys,
             hamiltonian=hamiltonian,
+            cut_map=cut_map,
+            num_cuts=strategy.num_cuts,
         )
 
         logger.info("Reconstructed energy (TN): %.12f", energy)
@@ -357,6 +446,7 @@ class DynaCutExecutor:
         num_samples: float = 10_000,
         reconstruction_method: str = "ibm",
         max_bond: Optional[int] = None,
+        options: Optional[dict] = None,
     ) -> Dict[str, Any]:
         """Run the full VQE optimization loop.
 
@@ -384,6 +474,8 @@ class DynaCutExecutor:
         max_bond : int, optional
             Max bond dimension for TN contraction.  Only used when
             ``reconstruction_method="tn"``.
+        options: dict, optional
+            Additional options for ZNE, Readout mitigation, etc.
 
         Returns
         -------
@@ -399,6 +491,10 @@ class DynaCutExecutor:
         history: List[float] = []
         eval_count = [0]
         t_start = time.time()
+        
+        if options is None:
+            options = {}
+        options["num_samples"] = num_samples
 
         def objective(params):
             energy = self.evaluate_energy(
@@ -406,6 +502,7 @@ class DynaCutExecutor:
                 num_samples=num_samples,
                 reconstruction_method=reconstruction_method,
                 max_bond=max_bond,
+                options=options,
             )
             history.append(energy)
             eval_count[0] += 1

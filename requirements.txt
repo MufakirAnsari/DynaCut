@@ -1,0 +1,13 @@
+qiskit>=1.0.0
+qiskit-aer>=0.14.0
+qiskit-addon-cutting>=0.7.0
+quimb>=1.8.2
+opt-einsum>=3.3.0
+networkx>=3.0
+numpy
+scipy
+matplotlib
+kahypar
+pyyaml
+pytest>=7.0.0
+pytest-cov>=4.0.0

@@ -1,0 +1,74 @@
+[
+    {
+        "num_qubits": 10,
+        "exact_energy": 1.4351647605911073,
+        "monolithic_error": 0.1530230777499746,
+        "dynacut_error_mean": 0.02015155037594831,
+        "dynacut_error_std": 0.01631662312798547,
+        "approx_K": 1
+    },
+    {
+        "num_qubits": 12,
+        "exact_energy": 1.3514376438032707,
+        "monolithic_error": 0.18687598570824693,
+        "dynacut_error_mean": 0.21435524688749408,
+        "dynacut_error_std": 0.1380503232922749,
+        "approx_K": 3
+    },
+    {
+        "num_qubits": 14,
+        "exact_energy": 1.1156951372533421,
+        "monolithic_error": 0.6291282473658529,
+        "dynacut_error_mean": 0.2869335693063883,
+        "dynacut_error_std": 0.2109501740990205,
+        "approx_K": 3
+    },
+    {
+        "num_qubits": 16,
+        "exact_energy": 0.5885969063169941,
+        "monolithic_error": 0.4312340894609321,
+        "dynacut_error_mean": 0.25115931593944885,
+        "dynacut_error_std": 0.11285063101776953,
+        "approx_K": 3
+    },
+    {
+        "num_qubits": 18,
+        "exact_energy": 0.8774784887701329,
+        "monolithic_error": 0.6672159206425783,
+        "dynacut_error_mean": 0.22242546066917016,
+        "dynacut_error_std": 0.17649300420302028,
+        "approx_K": 3
+    },
+    {
+        "num_qubits": 20,
+        "exact_energy": 0.5619401325390314,
+        "monolithic_error": 0.46421288892530244,
+        "dynacut_error_mean": 0.15094201624130937,
+        "dynacut_error_std": 0.1070569746445721,
+        "approx_K": 3
+    },
+    {
+        "num_qubits": 22,
+        "exact_energy": 0.5651429323864346,
+        "monolithic_error": 0.49958465631535826,
+        "dynacut_error_mean": 0.25939532183233416,
+        "dynacut_error_std": 0.17938049259182792,
+        "approx_K": 3
+    },
+    {
+        "num_qubits": 24,
+        "exact_energy": 0.41087292822082,
+        "monolithic_error": 0.3790807433510235,
+        "dynacut_error_mean": 0.2932050654737366,
+        "dynacut_error_std": 0.20437694228991052,
+        "approx_K": 3
+    },
+    {
+        "num_qubits": 26,
+        "exact_energy": 0.43744971654277987,
+        "monolithic_error": 0.41534319108356504,
+        "dynacut_error_mean": 0.16735878073072918,
+        "dynacut_error_std": 0.15158398516196453,
+        "approx_K": 3
+    }
+]

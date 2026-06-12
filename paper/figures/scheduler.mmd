@@ -1,0 +1,29 @@
+flowchart TD
+    Start([Circuit & Constraints]) --> B{Circuit fits in <br> VRAM limit?}
+    
+    B -- Yes --> C["Trivial Strategy <br> No Cuts"]
+    B -- No --> D{"Can KaHyPar find cuts <br> within RAM budget?"}
+    
+    C --> End1(["Execute Uncut"])
+    
+    D -- No --> E["Raise Hardware Error: <br> OOM / Timeout Risk"]
+    D -- Yes --> F["Generate QPD Basis <br> Overhead = 6^K"]
+    
+    F --> G{"Is Contraction Cost <br> O(χ² 2^Nf) <= RAM_MAX?"}
+    
+    G -- Yes --> H["Strategy: Exact TN Reconstruct"]
+    G -- No --> I["Strategy: Approx SVD TN Reconstruct"]
+    
+    H --> End2(["Partition & Execute"])
+    I --> End2
+    E --> End3(["Abort Execution"])
+
+    classDef success fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px;
+    classDef warning fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef danger fill:#ffebee,stroke:#c62828,stroke-width:2px;
+    classDef decision fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
+
+    class B,D,G decision;
+    class C,H,I,End1,End2 success;
+    class F warning;
+    class E,End3 danger;

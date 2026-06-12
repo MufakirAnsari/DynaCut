@@ -52,7 +52,15 @@ def phase3_experiment(seed: int, config: dict) -> dict:
         max_qubits_per_fragment=6,
     )
     strategy = hypervisor.find_optimal_strategy(ansatz)
-    executor = DynaCutExecutor(hypervisor)
+    
+    # Try to use standard CPU Sampler
+    try:
+        from qiskit_aer.primitives import Sampler as AerSampler
+        sampler = AerSampler()
+    except ImportError:
+        sampler = None
+        
+    executor = DynaCutExecutor(hypervisor, sampler=sampler)
 
     # 4. Run Optimization
     rng = np.random.default_rng(seed)
@@ -82,8 +90,8 @@ def phase3_experiment(seed: int, config: dict) -> dict:
     }
 
 def main():
-    runner = ExperimentRunner("vqe_convergence_multi", seeds=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    config = {"num_qubits": 10} # Reduced to 10 for faster testing in baseline phase
+    runner = ExperimentRunner("vqe_convergence_multi", seeds=list(range(10)))
+    config = {"num_qubits": 20} # N=20 for final empirical VQE evaluation
     
     results = runner.run(phase3_experiment, config)
     

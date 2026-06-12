@@ -1,0 +1,120 @@
+[
+  {
+    "n_qubits": 8,
+    "cluster_size": 4,
+    "n_bridges": 1,
+    "graph_type": "complete",
+    "status": "SUCCESS",
+    "energy": 2.0346345901489253,
+    "cuts": 1,
+    "fragments": 2,
+    "gamma": 3,
+    "cross_boundary_terms": 1,
+    "elapsed_seconds": 104.8,
+    "backend": "ibm_marrakesh",
+    "peak_rss_mb": 4918.0
+  },
+  {
+    "n_qubits": 10,
+    "cluster_size": 5,
+    "n_bridges": 1,
+    "graph_type": "cycle",
+    "status": "SUCCESS",
+    "energy": 0.14649310708045957,
+    "cuts": 1,
+    "fragments": 2,
+    "gamma": 3,
+    "cross_boundary_terms": 1,
+    "elapsed_seconds": 197.4,
+    "backend": "ibm_marrakesh",
+    "peak_rss_mb": 4918.0
+  },
+  {
+    "n_qubits": 12,
+    "cluster_size": 6,
+    "n_bridges": 1,
+    "graph_type": "cycle",
+    "status": "SUCCESS",
+    "energy": 2.4928605556488033,
+    "cuts": 1,
+    "fragments": 2,
+    "gamma": 3,
+    "cross_boundary_terms": 1,
+    "elapsed_seconds": 103.7,
+    "backend": "ibm_marrakesh",
+    "peak_rss_mb": 4918.0
+  },
+  {
+    "n_qubits": 16,
+    "n_bridges": 1,
+    "graph_type": "cycle",
+    "status": "SKIPPED_OOM_RISK",
+    "cuts": 4
+  },
+  {
+    "n_qubits": 20,
+    "n_bridges": 1,
+    "graph_type": "cycle",
+    "status": "SKIPPED_OOM_RISK",
+    "cuts": 4
+  },
+  {
+    "n_qubits": 24,
+    "cluster_size": 12,
+    "n_bridges": 1,
+    "graph_type": "cycle",
+    "status": "SUCCESS",
+    "energy": -0.6273517310619353,
+    "cuts": 1,
+    "fragments": 2,
+    "gamma": 3,
+    "cross_boundary_terms": 1,
+    "elapsed_seconds": 104.8,
+    "backend": "ibm_marrakesh",
+    "peak_rss_mb": 4918.0
+  },
+  {
+    "n_qubits": 30,
+    "n_bridges": 1,
+    "graph_type": "cycle",
+    "status": "SKIPPED_OOM_RISK",
+    "cuts": 4
+  },
+  {
+    "n_qubits": 40,
+    "cluster_size": 20,
+    "n_bridges": 1,
+    "graph_type": "cycle",
+    "status": "SUCCESS",
+    "energy": 4.764574468135833,
+    "cuts": 1,
+    "fragments": 2,
+    "gamma": 3,
+    "cross_boundary_terms": 1,
+    "elapsed_seconds": 111.6,
+    "backend": "ibm_marrakesh",
+    "peak_rss_mb": 4918.0
+  },
+  {
+    "n_qubits": 50,
+    "cluster_size": 25,
+    "n_bridges": 1,
+    "graph_type": "cycle",
+    "status": "SUCCESS",
+    "energy": 0.24560806155204767,
+    "cuts": 1,
+    "fragments": 2,
+    "gamma": 3,
+    "cross_boundary_terms": 1,
+    "elapsed_seconds": 197.0,
+    "backend": "ibm_marrakesh",
+    "peak_rss_mb": 4918.0
+  },
+  {
+    "n_qubits": 10,
+    "n_bridges": 2,
+    "graph_type": "cycle",
+    "status": "FAILED",
+    "error": "'Error code 1305; Ran too long Increase [max execution time](https://quantum.cloud.ibm.com/docs/guides/max-execution-time) or contact support.'"
+  }
+]

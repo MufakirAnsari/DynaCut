@@ -37,7 +37,7 @@ def run_entanglement_experiment(seed: int, config: Dict[str, Any]) -> Dict[str, 
         strategy = hypervisor.find_optimal_strategy(ansatz)
         
         # Safety guard: skip patterns that produce too many cuts (would hang)
-        if strategy.num_cuts > 10 or getattr(strategy, "qpd_overhead", 0) > 100:
+        if strategy.num_cuts > 10 or getattr(strategy, "qpd_overhead", 0) > 50:
             logger.warning(f"Skipping {ent_type}: exceeds safety limits (overhead={getattr(strategy, 'qpd_overhead', 'N/A')})")
             metrics[f"skipped_{ent_type}"] = strategy.num_cuts
             continue
