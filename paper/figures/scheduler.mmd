@@ -2,7 +2,7 @@ flowchart TD
     Start([Circuit & Constraints]) --> B{Circuit fits in <br> VRAM limit?}
     
     B -- Yes --> C["Trivial Strategy <br> No Cuts"]
-    B -- No --> D{"Can KaHyPar find cuts <br> within RAM budget?"}
+    B -- No --> D{"Can KL Bisection find cuts <br> within RAM budget?"}
     
     C --> End1(["Execute Uncut"])
     

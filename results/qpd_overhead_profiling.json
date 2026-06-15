@@ -1,0 +1,83 @@
+[
+    {
+        "N": 14,
+        "topology": "ring",
+        "density": 0.15384615384615385,
+        "cuts": 4,
+        "gamma": 81.0,
+        "shots_required": 23718683336.472706,
+        "tn_time": NaN
+    },
+    {
+        "N": 14,
+        "topology": "3-regular",
+        "density": 0.23076923076923078,
+        "cuts": 8,
+        "gamma": 6561.0,
+        "shots_required": 350141133083844.2,
+        "tn_time": NaN
+    },
+    {
+        "N": 14,
+        "topology": "dense",
+        "density": 0.4945054945054945,
+        "cuts": 29,
+        "gamma": 68630377364883.0,
+        "shots_required": 1.7592285689722916e+35,
+        "tn_time": NaN
+    },
+    {
+        "N": 18,
+        "topology": "ring",
+        "density": 0.11764705882352941,
+        "cuts": 4,
+        "gamma": 81.0,
+        "shots_required": 39208435719.47529,
+        "tn_time": NaN
+    },
+    {
+        "N": 18,
+        "topology": "3-regular",
+        "density": 0.17647058823529413,
+        "cuts": 11,
+        "gamma": 177147.0,
+        "shots_required": 4.2194864831567174e+17,
+        "tn_time": NaN
+    },
+    {
+        "N": 18,
+        "topology": "dense",
+        "density": 0.43137254901960786,
+        "cuts": 38,
+        "gamma": 1.350851717672992e+18,
+        "shots_required": 1.4661138539899708e+44,
+        "tn_time": NaN
+    },
+    {
+        "N": 22,
+        "topology": "ring",
+        "density": 0.09523809523809523,
+        "cuts": 4,
+        "gamma": 81.0,
+        "shots_required": 58570626198.228516,
+        "tn_time": NaN
+    },
+    {
+        "N": 22,
+        "topology": "3-regular",
+        "density": 0.14285714285714285,
+        "cuts": 12,
+        "gamma": 531441.0,
+        "shots_required": 5.672865160688475e+18,
+        "tn_time": NaN
+    },
+    {
+        "N": 22,
+        "topology": "dense",
+        "density": 0.4155844155844156,
+        "cuts": 59,
+        "gamma": 1.4130386091738735e+28,
+        "shots_required": 3.3940246395829594e+64,
+        "tn_time": NaN
+    }
+]

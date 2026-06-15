@@ -79,33 +79,57 @@ def run_scaling_benchmarks():
 
     qubits = np.arange(10, 28, 2)
     results = []
+    N_REPEATS = 5
 
     print("Starting Scaling Benchmarks...")
     for N in qubits:
         N = int(N)
         print(f"  N={N}:", end="")
 
-        # 1. IBM Statevector — extend to N=24 (256 MB feasible)
-        if N <= 24:
-            print(f" IBM...", end="")
-            vram_ibm, time_ibm = measure_peak_memory_and_time(run_ibm_statevector, N)
-            print(f" {vram_ibm:.2f}MB/{time_ibm:.4f}s", end="")
-        else:
-            vram_ibm = np.nan
-            time_ibm = np.nan
-            print(f" IBM=OOM", end="")
+        vram_ibm_list, time_ibm_list = [], []
+        vram_tn_list, time_tn_list = [], []
 
-        # 2. TN Contraction
-        print(f" | TN...", end="")
-        vram_tn, time_tn = measure_peak_memory_and_time(run_tn_contraction, N)
-        print(f" {vram_tn:.2f}MB/{time_tn:.4f}s")
+        for _ in range(N_REPEATS):
+            # 1. IBM Statevector — extend to N=24 (256 MB feasible)
+            if N <= 24:
+                v_ibm, t_ibm = measure_peak_memory_and_time(run_ibm_statevector, N)
+                vram_ibm_list.append(v_ibm)
+                time_ibm_list.append(t_ibm)
+            
+            # 2. TN Contraction
+            v_tn, t_tn = measure_peak_memory_and_time(run_tn_contraction, N)
+            vram_tn_list.append(v_tn)
+            time_tn_list.append(t_tn)
+        
+        if N <= 24:
+            vram_ibm = float(np.nanmean(vram_ibm_list))
+            vram_ibm_std = float(np.nanstd(vram_ibm_list))
+            time_ibm = float(np.nanmean(time_ibm_list))
+            time_ibm_std = float(np.nanstd(time_ibm_list))
+            print(f" IBM: {vram_ibm:.2f}±{vram_ibm_std:.2f}MB", end="")
+        else:
+            vram_ibm = None
+            vram_ibm_std = None
+            time_ibm = None
+            time_ibm_std = None
+            print(f" IBM: OOM", end="")
+            
+        vram_tn = float(np.nanmean(vram_tn_list))
+        vram_tn_std = float(np.nanstd(vram_tn_list))
+        time_tn = float(np.nanmean(time_tn_list))
+        time_tn_std = float(np.nanstd(time_tn_list))
+        print(f" | TN: {vram_tn:.2f}±{vram_tn_std:.2f}MB")
 
         results.append({
             "num_qubits": N,
-            "vram_ibm": vram_ibm if not np.isnan(vram_ibm) else None,
+            "vram_ibm": vram_ibm,
+            "vram_ibm_std": vram_ibm_std,
             "vram_tn": vram_tn,
-            "time_ibm": time_ibm if not np.isnan(time_ibm) else None,
+            "vram_tn_std": vram_tn_std,
+            "time_ibm": time_ibm,
+            "time_ibm_std": time_ibm_std,
             "time_tn": time_tn,
+            "time_tn_std": time_tn_std,
         })
 
     with open(os.path.join(RESULTS_DIR, "scaling_benchmarks.json"), "w") as f:

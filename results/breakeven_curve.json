@@ -1,0 +1,53 @@
+{
+    "N": 10,
+    "ideal_energy": 10.727979570954382,
+    "gamma": 27,
+    "norm_H": 15.0,
+    "data": [
+        {
+            "p_cx": 0.0,
+            "monolithic_energy": 10.727979570954357,
+            "dynacut_energy": 10.727979570954357
+        },
+        {
+            "p_cx": 0.005,
+            "monolithic_energy": 10.451528559308587,
+            "dynacut_energy": 10.507154378871975
+        },
+        {
+            "p_cx": 0.01,
+            "monolithic_energy": 10.197854622589306,
+            "dynacut_energy": 10.300797973082283
+        },
+        {
+            "p_cx": 0.02,
+            "monolithic_energy": 9.751802932680254,
+            "dynacut_energy": 9.92793572915606
+        },
+        {
+            "p_cx": 0.03,
+            "monolithic_energy": 9.377026166141636,
+            "dynacut_energy": 9.602793668358254
+        },
+        {
+            "p_cx": 0.04,
+            "monolithic_energy": 9.062573271312214,
+            "dynacut_energy": 9.31953139058798
+        },
+        {
+            "p_cx": 0.06,
+            "monolithic_energy": 8.578623967426262,
+            "dynacut_energy": 8.858599530808272
+        },
+        {
+            "p_cx": 0.08,
+            "monolithic_energy": 8.240632490583032,
+            "dynacut_energy": 8.510699185332287
+        },
+        {
+            "p_cx": 0.1,
+            "monolithic_energy": 8.005826296181574,
+            "dynacut_energy": 8.249093307528085
+        }
+    ]
+}

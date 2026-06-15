@@ -178,7 +178,7 @@ def run_baselines() -> None:
             executor = DynaCutExecutor(hypervisor)
             e_tn = executor.evaluate_energy(
                 params, ansatz, hamiltonian, strategy, 
-                num_samples=np.inf, reconstruction_method="tn", max_bond=None
+                num_samples=np.inf, reconstruction_method="ibm", max_bond=None
             )
             t_tn = time.time() - t0
             err_tn = abs(e_tn - e_exact)

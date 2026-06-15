@@ -1,0 +1,1202 @@
+[
+    {
+        "N": 10,
+        "topology": "1D_chain",
+        "seed": 0,
+        "sdp_bound": 9.000000284665127,
+        "cut_value": 9,
+        "time": 0.024509906768798828
+    },
+    {
+        "N": 10,
+        "topology": "1D_chain",
+        "seed": 1,
+        "sdp_bound": 9.000000284665127,
+        "cut_value": 9,
+        "time": 0.0149688720703125
+    },
+    {
+        "N": 10,
+        "topology": "1D_chain",
+        "seed": 2,
+        "sdp_bound": 9.000000284665127,
+        "cut_value": 9,
+        "time": 0.014896154403686523
+    },
+    {
+        "N": 10,
+        "topology": "1D_chain",
+        "seed": 3,
+        "sdp_bound": 9.000000284665127,
+        "cut_value": 9,
+        "time": 0.014780282974243164
+    },
+    {
+        "N": 10,
+        "topology": "1D_chain",
+        "seed": 4,
+        "sdp_bound": 9.000000284665127,
+        "cut_value": 9,
+        "time": 0.014609575271606445
+    },
+    {
+        "N": 10,
+        "topology": "1D_chain",
+        "seed": 5,
+        "sdp_bound": 9.000000284665127,
+        "cut_value": 9,
+        "time": 0.014902830123901367
+    },
+    {
+        "N": 10,
+        "topology": "1D_chain",
+        "seed": 6,
+        "sdp_bound": 9.000000284665127,
+        "cut_value": 9,
+        "time": 0.014831304550170898
+    },
+    {
+        "N": 10,
+        "topology": "1D_chain",
+        "seed": 7,
+        "sdp_bound": 9.000000284665127,
+        "cut_value": 9,
+        "time": 0.014580726623535156
+    },
+    {
+        "N": 10,
+        "topology": "1D_chain",
+        "seed": 8,
+        "sdp_bound": 9.000000284665127,
+        "cut_value": 9,
+        "time": 0.015074968338012695
+    },
+    {
+        "N": 10,
+        "topology": "1D_chain",
+        "seed": 9,
+        "sdp_bound": 9.000000284665127,
+        "cut_value": 9,
+        "time": 0.01596808433532715
+    },
+    {
+        "N": 10,
+        "topology": "3_regular",
+        "seed": 0,
+        "sdp_bound": 13.032623669154438,
+        "cut_value": 13,
+        "time": 0.01770639419555664
+    },
+    {
+        "N": 10,
+        "topology": "3_regular",
+        "seed": 1,
+        "sdp_bound": 12.249999072356463,
+        "cut_value": 12,
+        "time": 0.01788163185119629
+    },
+    {
+        "N": 10,
+        "topology": "3_regular",
+        "seed": 2,
+        "sdp_bound": 13.429857114695999,
+        "cut_value": 13,
+        "time": 0.017445802688598633
+    },
+    {
+        "N": 10,
+        "topology": "3_regular",
+        "seed": 3,
+        "sdp_bound": 13.655720147588303,
+        "cut_value": 13,
+        "time": 0.01777958869934082
+    },
+    {
+        "N": 10,
+        "topology": "3_regular",
+        "seed": 4,
+        "sdp_bound": 13.726266929276042,
+        "cut_value": 13,
+        "time": 0.017746925354003906
+    },
+    {
+        "N": 10,
+        "topology": "3_regular",
+        "seed": 5,
+        "sdp_bound": 13.726266929276035,
+        "cut_value": 13,
+        "time": 0.01772308349609375
+    },
+    {
+        "N": 10,
+        "topology": "3_regular",
+        "seed": 6,
+        "sdp_bound": 12.249999072356474,
+        "cut_value": 12,
+        "time": 0.017895221710205078
+    },
+    {
+        "N": 10,
+        "topology": "3_regular",
+        "seed": 7,
+        "sdp_bound": 13.101475748165658,
+        "cut_value": 13,
+        "time": 0.0186004638671875
+    },
+    {
+        "N": 10,
+        "topology": "3_regular",
+        "seed": 8,
+        "sdp_bound": 13.429857114696064,
+        "cut_value": 13,
+        "time": 0.018687009811401367
+    },
+    {
+        "N": 10,
+        "topology": "3_regular",
+        "seed": 9,
+        "sdp_bound": 13.726266929276019,
+        "cut_value": 13,
+        "time": 0.018136978149414062
+    },
+    {
+        "N": 10,
+        "topology": "SBM",
+        "seed": 0,
+        "sdp_bound": 13.429442897676392,
+        "cut_value": 13,
+        "time": 0.018967628479003906
+    },
+    {
+        "N": 10,
+        "topology": "SBM",
+        "seed": 1,
+        "sdp_bound": 13.682257954134451,
+        "cut_value": 13,
+        "time": 0.020178794860839844
+    },
+    {
+        "N": 10,
+        "topology": "SBM",
+        "seed": 2,
+        "sdp_bound": 13.000008694026327,
+        "cut_value": 13,
+        "time": 0.019293546676635742
+    },
+    {
+        "N": 10,
+        "topology": "SBM",
+        "seed": 3,
+        "sdp_bound": 15.631571378768305,
+        "cut_value": 15,
+        "time": 0.020899057388305664
+    },
+    {
+        "N": 10,
+        "topology": "SBM",
+        "seed": 4,
+        "sdp_bound": 12.435486461552102,
+        "cut_value": 12,
+        "time": 0.017739057540893555
+    },
+    {
+        "N": 10,
+        "topology": "SBM",
+        "seed": 5,
+        "sdp_bound": 13.249998567705045,
+        "cut_value": 13,
+        "time": 0.019254446029663086
+    },
+    {
+        "N": 10,
+        "topology": "SBM",
+        "seed": 6,
+        "sdp_bound": 15.200731742093033,
+        "cut_value": 15,
+        "time": 0.02029561996459961
+    },
+    {
+        "N": 10,
+        "topology": "SBM",
+        "seed": 7,
+        "sdp_bound": 12.435485735756382,
+        "cut_value": 12,
+        "time": 0.019490957260131836
+    },
+    {
+        "N": 10,
+        "topology": "SBM",
+        "seed": 8,
+        "sdp_bound": 15.25000106799439,
+        "cut_value": 15,
+        "time": 0.02085733413696289
+    },
+    {
+        "N": 10,
+        "topology": "SBM",
+        "seed": 9,
+        "sdp_bound": 15.133509549753773,
+        "cut_value": 15,
+        "time": 0.02594780921936035
+    },
+    {
+        "N": 14,
+        "topology": "1D_chain",
+        "seed": 0,
+        "sdp_bound": 13.000000776367996,
+        "cut_value": 13,
+        "time": 0.02285027503967285
+    },
+    {
+        "N": 14,
+        "topology": "1D_chain",
+        "seed": 1,
+        "sdp_bound": 13.000000776367996,
+        "cut_value": 13,
+        "time": 0.02330946922302246
+    },
+    {
+        "N": 14,
+        "topology": "1D_chain",
+        "seed": 2,
+        "sdp_bound": 13.000000776367996,
+        "cut_value": 13,
+        "time": 0.02185511589050293
+    },
+    {
+        "N": 14,
+        "topology": "1D_chain",
+        "seed": 3,
+        "sdp_bound": 13.000000776367996,
+        "cut_value": 13,
+        "time": 0.022107601165771484
+    },
+    {
+        "N": 14,
+        "topology": "1D_chain",
+        "seed": 4,
+        "sdp_bound": 13.000000776367996,
+        "cut_value": 13,
+        "time": 0.020180940628051758
+    },
+    {
+        "N": 14,
+        "topology": "1D_chain",
+        "seed": 5,
+        "sdp_bound": 13.000000776367996,
+        "cut_value": 13,
+        "time": 0.020203351974487305
+    },
+    {
+        "N": 14,
+        "topology": "1D_chain",
+        "seed": 6,
+        "sdp_bound": 13.000000776367996,
+        "cut_value": 13,
+        "time": 0.020595073699951172
+    },
+    {
+        "N": 14,
+        "topology": "1D_chain",
+        "seed": 7,
+        "sdp_bound": 13.000000776367996,
+        "cut_value": 13,
+        "time": 0.020398616790771484
+    },
+    {
+        "N": 14,
+        "topology": "1D_chain",
+        "seed": 8,
+        "sdp_bound": 13.000000776367996,
+        "cut_value": 13,
+        "time": 0.02164602279663086
+    },
+    {
+        "N": 14,
+        "topology": "1D_chain",
+        "seed": 9,
+        "sdp_bound": 13.000000776367996,
+        "cut_value": 13,
+        "time": 0.02028822898864746
+    },
+    {
+        "N": 14,
+        "topology": "3_regular",
+        "seed": 0,
+        "sdp_bound": 18.437614460772913,
+        "cut_value": 18,
+        "time": 0.021494388580322266
+    },
+    {
+        "N": 14,
+        "topology": "3_regular",
+        "seed": 1,
+        "sdp_bound": 19.33422250201335,
+        "cut_value": 19,
+        "time": 0.024890899658203125
+    },
+    {
+        "N": 14,
+        "topology": "3_regular",
+        "seed": 2,
+        "sdp_bound": 17.830193383999802,
+        "cut_value": 17,
+        "time": 0.02239680290222168
+    },
+    {
+        "N": 14,
+        "topology": "3_regular",
+        "seed": 3,
+        "sdp_bound": 19.365795122995365,
+        "cut_value": 19,
+        "time": 0.022206783294677734
+    },
+    {
+        "N": 14,
+        "topology": "3_regular",
+        "seed": 4,
+        "sdp_bound": 18.398098688908895,
+        "cut_value": 18,
+        "time": 0.05903363227844238
+    },
+    {
+        "N": 14,
+        "topology": "3_regular",
+        "seed": 5,
+        "sdp_bound": 18.50457059930907,
+        "cut_value": 18,
+        "time": 0.02279949188232422
+    },
+    {
+        "N": 14,
+        "topology": "3_regular",
+        "seed": 6,
+        "sdp_bound": 18.54983789787855,
+        "cut_value": 18,
+        "time": 0.022742033004760742
+    },
+    {
+        "N": 14,
+        "topology": "3_regular",
+        "seed": 7,
+        "sdp_bound": 19.196753034519002,
+        "cut_value": 19,
+        "time": 0.023047924041748047
+    },
+    {
+        "N": 14,
+        "topology": "3_regular",
+        "seed": 8,
+        "sdp_bound": 18.34832351461871,
+        "cut_value": 18,
+        "time": 0.0233306884765625
+    },
+    {
+        "N": 14,
+        "topology": "3_regular",
+        "seed": 9,
+        "sdp_bound": 18.069300342343922,
+        "cut_value": 18,
+        "time": 0.022191286087036133
+    },
+    {
+        "N": 14,
+        "topology": "SBM",
+        "seed": 0,
+        "sdp_bound": 25.626805158134083,
+        "cut_value": 25,
+        "time": 0.03016948699951172
+    },
+    {
+        "N": 14,
+        "topology": "SBM",
+        "seed": 1,
+        "sdp_bound": 27.46624323364488,
+        "cut_value": 26,
+        "time": 0.03144550323486328
+    },
+    {
+        "N": 14,
+        "topology": "SBM",
+        "seed": 2,
+        "sdp_bound": 28.28537951410318,
+        "cut_value": 27,
+        "time": 0.03161811828613281
+    },
+    {
+        "N": 14,
+        "topology": "SBM",
+        "seed": 3,
+        "sdp_bound": 25.32683719475195,
+        "cut_value": 25,
+        "time": 0.030041933059692383
+    },
+    {
+        "N": 14,
+        "topology": "SBM",
+        "seed": 4,
+        "sdp_bound": 26.894133243652018,
+        "cut_value": 26,
+        "time": 0.03018641471862793
+    },
+    {
+        "N": 14,
+        "topology": "SBM",
+        "seed": 5,
+        "sdp_bound": 25.362512243291178,
+        "cut_value": 25,
+        "time": 0.029497861862182617
+    },
+    {
+        "N": 14,
+        "topology": "SBM",
+        "seed": 6,
+        "sdp_bound": 27.725855749088666,
+        "cut_value": 27,
+        "time": 0.03132176399230957
+    },
+    {
+        "N": 14,
+        "topology": "SBM",
+        "seed": 7,
+        "sdp_bound": 27.291602835355963,
+        "cut_value": 27,
+        "time": 0.03408694267272949
+    },
+    {
+        "N": 14,
+        "topology": "SBM",
+        "seed": 8,
+        "sdp_bound": 27.191624992286243,
+        "cut_value": 27,
+        "time": 0.03108525276184082
+    },
+    {
+        "N": 14,
+        "topology": "SBM",
+        "seed": 9,
+        "sdp_bound": 26.86535239084604,
+        "cut_value": 26,
+        "time": 0.030958175659179688
+    },
+    {
+        "N": 18,
+        "topology": "1D_chain",
+        "seed": 0,
+        "sdp_bound": 16.99998578883266,
+        "cut_value": 17,
+        "time": 0.0257568359375
+    },
+    {
+        "N": 18,
+        "topology": "1D_chain",
+        "seed": 1,
+        "sdp_bound": 16.99998578883266,
+        "cut_value": 17,
+        "time": 0.02626967430114746
+    },
+    {
+        "N": 18,
+        "topology": "1D_chain",
+        "seed": 2,
+        "sdp_bound": 16.99998578883266,
+        "cut_value": 17,
+        "time": 0.02969813346862793
+    },
+    {
+        "N": 18,
+        "topology": "1D_chain",
+        "seed": 3,
+        "sdp_bound": 16.99998578883266,
+        "cut_value": 17,
+        "time": 0.025694608688354492
+    },
+    {
+        "N": 18,
+        "topology": "1D_chain",
+        "seed": 4,
+        "sdp_bound": 16.99998578883266,
+        "cut_value": 17,
+        "time": 0.025998353958129883
+    },
+    {
+        "N": 18,
+        "topology": "1D_chain",
+        "seed": 5,
+        "sdp_bound": 16.99998578883266,
+        "cut_value": 17,
+        "time": 0.025443553924560547
+    },
+    {
+        "N": 18,
+        "topology": "1D_chain",
+        "seed": 6,
+        "sdp_bound": 16.99998578883266,
+        "cut_value": 17,
+        "time": 0.025745391845703125
+    },
+    {
+        "N": 18,
+        "topology": "1D_chain",
+        "seed": 7,
+        "sdp_bound": 16.99998578883266,
+        "cut_value": 17,
+        "time": 0.026839733123779297
+    },
+    {
+        "N": 18,
+        "topology": "1D_chain",
+        "seed": 8,
+        "sdp_bound": 16.99998578883266,
+        "cut_value": 17,
+        "time": 0.02628779411315918
+    },
+    {
+        "N": 18,
+        "topology": "1D_chain",
+        "seed": 9,
+        "sdp_bound": 16.99998578883266,
+        "cut_value": 17,
+        "time": 0.02583169937133789
+    },
+    {
+        "N": 18,
+        "topology": "3_regular",
+        "seed": 0,
+        "sdp_bound": 24.432999392889705,
+        "cut_value": 24,
+        "time": 0.027872800827026367
+    },
+    {
+        "N": 18,
+        "topology": "3_regular",
+        "seed": 1,
+        "sdp_bound": 25.44524885813734,
+        "cut_value": 25,
+        "time": 0.02708125114440918
+    },
+    {
+        "N": 18,
+        "topology": "3_regular",
+        "seed": 2,
+        "sdp_bound": 24.252292300431307,
+        "cut_value": 23,
+        "time": 0.027683258056640625
+    },
+    {
+        "N": 18,
+        "topology": "3_regular",
+        "seed": 3,
+        "sdp_bound": 24.335435872662238,
+        "cut_value": 24,
+        "time": 0.029452085494995117
+    },
+    {
+        "N": 18,
+        "topology": "3_regular",
+        "seed": 4,
+        "sdp_bound": 23.639505044753182,
+        "cut_value": 23,
+        "time": 0.027999401092529297
+    },
+    {
+        "N": 18,
+        "topology": "3_regular",
+        "seed": 5,
+        "sdp_bound": 24.57024799214045,
+        "cut_value": 24,
+        "time": 0.02840280532836914
+    },
+    {
+        "N": 18,
+        "topology": "3_regular",
+        "seed": 6,
+        "sdp_bound": 23.151166300442878,
+        "cut_value": 22,
+        "time": 0.0275576114654541
+    },
+    {
+        "N": 18,
+        "topology": "3_regular",
+        "seed": 7,
+        "sdp_bound": 23.961106266546707,
+        "cut_value": 23,
+        "time": 0.026945829391479492
+    },
+    {
+        "N": 18,
+        "topology": "3_regular",
+        "seed": 8,
+        "sdp_bound": 24.220762153615205,
+        "cut_value": 23,
+        "time": 0.027076005935668945
+    },
+    {
+        "N": 18,
+        "topology": "3_regular",
+        "seed": 9,
+        "sdp_bound": 24.33531366784359,
+        "cut_value": 23,
+        "time": 0.026890993118286133
+    },
+    {
+        "N": 18,
+        "topology": "SBM",
+        "seed": 0,
+        "sdp_bound": 39.74634505093051,
+        "cut_value": 39,
+        "time": 0.052368879318237305
+    },
+    {
+        "N": 18,
+        "topology": "SBM",
+        "seed": 1,
+        "sdp_bound": 49.064882437878964,
+        "cut_value": 48,
+        "time": 0.05011796951293945
+    },
+    {
+        "N": 18,
+        "topology": "SBM",
+        "seed": 2,
+        "sdp_bound": 51.042103230981425,
+        "cut_value": 50,
+        "time": 0.05409049987792969
+    },
+    {
+        "N": 18,
+        "topology": "SBM",
+        "seed": 3,
+        "sdp_bound": 39.45021799923323,
+        "cut_value": 38,
+        "time": 0.04624676704406738
+    },
+    {
+        "N": 18,
+        "topology": "SBM",
+        "seed": 4,
+        "sdp_bound": 45.9336919421937,
+        "cut_value": 45,
+        "time": 0.050095319747924805
+    },
+    {
+        "N": 18,
+        "topology": "SBM",
+        "seed": 5,
+        "sdp_bound": 44.96407349924104,
+        "cut_value": 44,
+        "time": 0.04595470428466797
+    },
+    {
+        "N": 18,
+        "topology": "SBM",
+        "seed": 6,
+        "sdp_bound": 45.04121957157635,
+        "cut_value": 44,
+        "time": 0.04808306694030762
+    },
+    {
+        "N": 18,
+        "topology": "SBM",
+        "seed": 7,
+        "sdp_bound": 48.79820434853819,
+        "cut_value": 48,
+        "time": 0.05049777030944824
+    },
+    {
+        "N": 18,
+        "topology": "SBM",
+        "seed": 8,
+        "sdp_bound": 47.7211900596985,
+        "cut_value": 47,
+        "time": 0.05272030830383301
+    },
+    {
+        "N": 18,
+        "topology": "SBM",
+        "seed": 9,
+        "sdp_bound": 41.807577373579264,
+        "cut_value": 41,
+        "time": 0.045446157455444336
+    },
+    {
+        "N": 22,
+        "topology": "1D_chain",
+        "seed": 0,
+        "sdp_bound": 21.00002297471861,
+        "cut_value": 21,
+        "time": 0.03548574447631836
+    },
+    {
+        "N": 22,
+        "topology": "1D_chain",
+        "seed": 1,
+        "sdp_bound": 21.00002297471861,
+        "cut_value": 21,
+        "time": 0.03878140449523926
+    },
+    {
+        "N": 22,
+        "topology": "1D_chain",
+        "seed": 2,
+        "sdp_bound": 21.00002297471861,
+        "cut_value": 21,
+        "time": 0.036242008209228516
+    },
+    {
+        "N": 22,
+        "topology": "1D_chain",
+        "seed": 3,
+        "sdp_bound": 21.00002297471861,
+        "cut_value": 21,
+        "time": 0.03523850440979004
+    },
+    {
+        "N": 22,
+        "topology": "1D_chain",
+        "seed": 4,
+        "sdp_bound": 21.00002297471861,
+        "cut_value": 21,
+        "time": 0.03527045249938965
+    },
+    {
+        "N": 22,
+        "topology": "1D_chain",
+        "seed": 5,
+        "sdp_bound": 21.00002297471861,
+        "cut_value": 21,
+        "time": 0.03506803512573242
+    },
+    {
+        "N": 22,
+        "topology": "1D_chain",
+        "seed": 6,
+        "sdp_bound": 21.00002297471861,
+        "cut_value": 21,
+        "time": 0.03550124168395996
+    },
+    {
+        "N": 22,
+        "topology": "1D_chain",
+        "seed": 7,
+        "sdp_bound": 21.00002297471861,
+        "cut_value": 21,
+        "time": 0.041849613189697266
+    },
+    {
+        "N": 22,
+        "topology": "1D_chain",
+        "seed": 8,
+        "sdp_bound": 21.00002297471861,
+        "cut_value": 21,
+        "time": 0.0354764461517334
+    },
+    {
+        "N": 22,
+        "topology": "1D_chain",
+        "seed": 9,
+        "sdp_bound": 21.00002297471861,
+        "cut_value": 21,
+        "time": 0.03580451011657715
+    },
+    {
+        "N": 22,
+        "topology": "3_regular",
+        "seed": 0,
+        "sdp_bound": 30.591143890884073,
+        "cut_value": 29,
+        "time": 0.031606435775756836
+    },
+    {
+        "N": 22,
+        "topology": "3_regular",
+        "seed": 1,
+        "sdp_bound": 29.598181483614052,
+        "cut_value": 29,
+        "time": 0.035755157470703125
+    },
+    {
+        "N": 22,
+        "topology": "3_regular",
+        "seed": 2,
+        "sdp_bound": 29.28803501493975,
+        "cut_value": 28,
+        "time": 0.032663583755493164
+    },
+    {
+        "N": 22,
+        "topology": "3_regular",
+        "seed": 3,
+        "sdp_bound": 30.531078051304025,
+        "cut_value": 30,
+        "time": 0.03233814239501953
+    },
+    {
+        "N": 22,
+        "topology": "3_regular",
+        "seed": 4,
+        "sdp_bound": 30.195622953541818,
+        "cut_value": 29,
+        "time": 0.032767295837402344
+    },
+    {
+        "N": 22,
+        "topology": "3_regular",
+        "seed": 5,
+        "sdp_bound": 30.431184328955812,
+        "cut_value": 30,
+        "time": 0.03290605545043945
+    },
+    {
+        "N": 22,
+        "topology": "3_regular",
+        "seed": 6,
+        "sdp_bound": 29.527602262553334,
+        "cut_value": 28,
+        "time": 0.033017635345458984
+    },
+    {
+        "N": 22,
+        "topology": "3_regular",
+        "seed": 7,
+        "sdp_bound": 30.138678447330975,
+        "cut_value": 29,
+        "time": 0.03299236297607422
+    },
+    {
+        "N": 22,
+        "topology": "3_regular",
+        "seed": 8,
+        "sdp_bound": 30.727251073191756,
+        "cut_value": 29,
+        "time": 0.031961679458618164
+    },
+    {
+        "N": 22,
+        "topology": "3_regular",
+        "seed": 9,
+        "sdp_bound": 30.899858160959663,
+        "cut_value": 30,
+        "time": 0.03362679481506348
+    },
+    {
+        "N": 22,
+        "topology": "SBM",
+        "seed": 0,
+        "sdp_bound": 63.53611324080922,
+        "cut_value": 62,
+        "time": 0.10298538208007812
+    },
+    {
+        "N": 22,
+        "topology": "SBM",
+        "seed": 1,
+        "sdp_bound": 65.92326201411849,
+        "cut_value": 64,
+        "time": 0.07305455207824707
+    },
+    {
+        "N": 22,
+        "topology": "SBM",
+        "seed": 2,
+        "sdp_bound": 70.09333238122825,
+        "cut_value": 68,
+        "time": 0.07017993927001953
+    },
+    {
+        "N": 22,
+        "topology": "SBM",
+        "seed": 3,
+        "sdp_bound": 68.61242839743532,
+        "cut_value": 67,
+        "time": 0.0687706470489502
+    },
+    {
+        "N": 22,
+        "topology": "SBM",
+        "seed": 4,
+        "sdp_bound": 65.00295985194036,
+        "cut_value": 64,
+        "time": 0.0714879035949707
+    },
+    {
+        "N": 22,
+        "topology": "SBM",
+        "seed": 5,
+        "sdp_bound": 61.06045620228821,
+        "cut_value": 59,
+        "time": 0.06457281112670898
+    },
+    {
+        "N": 22,
+        "topology": "SBM",
+        "seed": 6,
+        "sdp_bound": 62.64682458196302,
+        "cut_value": 61,
+        "time": 0.06963968276977539
+    },
+    {
+        "N": 22,
+        "topology": "SBM",
+        "seed": 7,
+        "sdp_bound": 69.75021189060779,
+        "cut_value": 68,
+        "time": 0.07156491279602051
+    },
+    {
+        "N": 22,
+        "topology": "SBM",
+        "seed": 8,
+        "sdp_bound": 64.55966275325139,
+        "cut_value": 63,
+        "time": 0.06829166412353516
+    },
+    {
+        "N": 22,
+        "topology": "SBM",
+        "seed": 9,
+        "sdp_bound": 67.83318099715986,
+        "cut_value": 67,
+        "time": 0.07027888298034668
+    },
+    {
+        "N": 26,
+        "topology": "1D_chain",
+        "seed": 0,
+        "sdp_bound": 24.999990616091544,
+        "cut_value": 25,
+        "time": 0.06885480880737305
+    },
+    {
+        "N": 26,
+        "topology": "1D_chain",
+        "seed": 1,
+        "sdp_bound": 24.999990616091544,
+        "cut_value": 25,
+        "time": 0.06743049621582031
+    },
+    {
+        "N": 26,
+        "topology": "1D_chain",
+        "seed": 2,
+        "sdp_bound": 24.999990616091544,
+        "cut_value": 25,
+        "time": 0.05462217330932617
+    },
+    {
+        "N": 26,
+        "topology": "1D_chain",
+        "seed": 3,
+        "sdp_bound": 24.999990616091544,
+        "cut_value": 25,
+        "time": 0.061368465423583984
+    },
+    {
+        "N": 26,
+        "topology": "1D_chain",
+        "seed": 4,
+        "sdp_bound": 24.999990616091544,
+        "cut_value": 25,
+        "time": 0.06384134292602539
+    },
+    {
+        "N": 26,
+        "topology": "1D_chain",
+        "seed": 5,
+        "sdp_bound": 24.999990616091544,
+        "cut_value": 25,
+        "time": 0.06116819381713867
+    },
+    {
+        "N": 26,
+        "topology": "1D_chain",
+        "seed": 6,
+        "sdp_bound": 24.999990616091544,
+        "cut_value": 25,
+        "time": 0.05522036552429199
+    },
+    {
+        "N": 26,
+        "topology": "1D_chain",
+        "seed": 7,
+        "sdp_bound": 24.999990616091544,
+        "cut_value": 25,
+        "time": 0.06118130683898926
+    },
+    {
+        "N": 26,
+        "topology": "1D_chain",
+        "seed": 8,
+        "sdp_bound": 24.999990616091544,
+        "cut_value": 25,
+        "time": 0.05399155616760254
+    },
+    {
+        "N": 26,
+        "topology": "1D_chain",
+        "seed": 9,
+        "sdp_bound": 24.999990616091544,
+        "cut_value": 25,
+        "time": 0.058141469955444336
+    },
+    {
+        "N": 26,
+        "topology": "3_regular",
+        "seed": 0,
+        "sdp_bound": 36.35792830512112,
+        "cut_value": 35,
+        "time": 0.05434465408325195
+    },
+    {
+        "N": 26,
+        "topology": "3_regular",
+        "seed": 1,
+        "sdp_bound": 36.745936325968735,
+        "cut_value": 36,
+        "time": 0.04877138137817383
+    },
+    {
+        "N": 26,
+        "topology": "3_regular",
+        "seed": 2,
+        "sdp_bound": 36.899944188995946,
+        "cut_value": 35,
+        "time": 0.05510663986206055
+    },
+    {
+        "N": 26,
+        "topology": "3_regular",
+        "seed": 3,
+        "sdp_bound": 36.18086117661665,
+        "cut_value": 35,
+        "time": 0.049401283264160156
+    },
+    {
+        "N": 26,
+        "topology": "3_regular",
+        "seed": 4,
+        "sdp_bound": 36.57731492995332,
+        "cut_value": 35,
+        "time": 0.08803081512451172
+    },
+    {
+        "N": 26,
+        "topology": "3_regular",
+        "seed": 5,
+        "sdp_bound": 34.72139816726416,
+        "cut_value": 33,
+        "time": 0.059253692626953125
+    },
+    {
+        "N": 26,
+        "topology": "3_regular",
+        "seed": 6,
+        "sdp_bound": 36.458060741989385,
+        "cut_value": 35,
+        "time": 0.0490262508392334
+    },
+    {
+        "N": 26,
+        "topology": "3_regular",
+        "seed": 7,
+        "sdp_bound": 36.47053749454042,
+        "cut_value": 36,
+        "time": 0.04988598823547363
+    },
+    {
+        "N": 26,
+        "topology": "3_regular",
+        "seed": 8,
+        "sdp_bound": 36.16423461091242,
+        "cut_value": 35,
+        "time": 0.08707046508789062
+    },
+    {
+        "N": 26,
+        "topology": "3_regular",
+        "seed": 9,
+        "sdp_bound": 36.65114161498713,
+        "cut_value": 36,
+        "time": 0.05277538299560547
+    },
+    {
+        "N": 26,
+        "topology": "SBM",
+        "seed": 0,
+        "sdp_bound": 97.86904748854496,
+        "cut_value": 96,
+        "time": 0.09908699989318848
+    },
+    {
+        "N": 26,
+        "topology": "SBM",
+        "seed": 1,
+        "sdp_bound": 96.48600321565401,
+        "cut_value": 94,
+        "time": 0.11814188957214355
+    },
+    {
+        "N": 26,
+        "topology": "SBM",
+        "seed": 2,
+        "sdp_bound": 93.10523562270909,
+        "cut_value": 92,
+        "time": 0.1593761444091797
+    },
+    {
+        "N": 26,
+        "topology": "SBM",
+        "seed": 3,
+        "sdp_bound": 87.5484702808071,
+        "cut_value": 87,
+        "time": 0.09688019752502441
+    },
+    {
+        "N": 26,
+        "topology": "SBM",
+        "seed": 4,
+        "sdp_bound": 90.8344782862396,
+        "cut_value": 89,
+        "time": 0.10370707511901855
+    },
+    {
+        "N": 26,
+        "topology": "SBM",
+        "seed": 5,
+        "sdp_bound": 88.96486147797388,
+        "cut_value": 87,
+        "time": 0.11951613426208496
+    },
+    {
+        "N": 26,
+        "topology": "SBM",
+        "seed": 6,
+        "sdp_bound": 92.48309790976298,
+        "cut_value": 91,
+        "time": 0.11975908279418945
+    },
+    {
+        "N": 26,
+        "topology": "SBM",
+        "seed": 7,
+        "sdp_bound": 92.910780512095,
+        "cut_value": 91,
+        "time": 0.17652463912963867
+    },
+    {
+        "N": 26,
+        "topology": "SBM",
+        "seed": 8,
+        "sdp_bound": 89.37775991608004,
+        "cut_value": 87,
+        "time": 0.11165142059326172
+    },
+    {
+        "N": 26,
+        "topology": "SBM",
+        "seed": 9,
+        "sdp_bound": 92.59195798754544,
+        "cut_value": 90,
+        "time": 0.10750532150268555
+    }
+]

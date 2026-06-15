@@ -1,0 +1,74 @@
+{
+    "10": {
+        "num_qubits": 10,
+        "num_fragments": 1,
+        "num_cuts": 0,
+        "max_fragment_size": 10,
+        "qpd_overhead": 1.0,
+        "estimated_ram_gb": 0.0
+    },
+    "12": {
+        "num_qubits": 12,
+        "num_fragments": 1,
+        "num_cuts": 0,
+        "max_fragment_size": 12,
+        "qpd_overhead": 1.0,
+        "estimated_ram_gb": 0.0
+    },
+    "14": {
+        "num_qubits": 14,
+        "num_fragments": 1,
+        "num_cuts": 0,
+        "max_fragment_size": 14,
+        "qpd_overhead": 1.0,
+        "estimated_ram_gb": 0.0
+    },
+    "16": {
+        "num_qubits": 16,
+        "num_fragments": 2,
+        "num_cuts": 8,
+        "max_fragment_size": 14,
+        "qpd_overhead": 1679616.0,
+        "estimated_ram_gb": 0.012514114379882806
+    },
+    "18": {
+        "num_qubits": 18,
+        "num_fragments": 2,
+        "num_cuts": 8,
+        "max_fragment_size": 14,
+        "qpd_overhead": 1679616.0,
+        "estimated_ram_gb": 0.012514114379882806
+    },
+    "20": {
+        "num_qubits": 20,
+        "num_fragments": 2,
+        "num_cuts": 9,
+        "max_fragment_size": 14,
+        "qpd_overhead": 10077696.0,
+        "estimated_ram_gb": 0.07508468627929674
+    },
+    "22": {
+        "num_qubits": 22,
+        "num_fragments": 2,
+        "num_cuts": 11,
+        "max_fragment_size": 13,
+        "qpd_overhead": 362797056.0,
+        "estimated_ram_gb": 2.703048706054689
+    },
+    "24": {
+        "num_qubits": 24,
+        "num_fragments": 2,
+        "num_cuts": 15,
+        "max_fragment_size": 14,
+        "qpd_overhead": 470184984576.0,
+        "estimated_ram_gb": 10.0
+    },
+    "26": {
+        "num_qubits": 26,
+        "num_fragments": 2,
+        "num_cuts": 12,
+        "max_fragment_size": 14,
+        "qpd_overhead": 2176782336.0,
+        "estimated_ram_gb": 10.0
+    }
+}

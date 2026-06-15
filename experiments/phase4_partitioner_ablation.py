@@ -37,6 +37,14 @@ def build_qaoa_circuit(G, gamma=0.5, beta=0.2):
     return qc
 
 
+def spectral_bisection(G):
+    try:
+        fiedler = nx.algebraicconnectivity.fiedler_vector(G)
+        median = np.median(fiedler)
+        return [i for i, val in enumerate(fiedler) if val <= median]
+    except:
+        return [i for i in range(len(G)) if i < len(G)//2]
+
 def run_partitioner_ablation():
     RESULTS_DIR = os.path.join(os.path.dirname(__file__), "..", "results")
     os.makedirs(RESULTS_DIR, exist_ok=True)
@@ -68,10 +76,15 @@ def run_partitioner_ablation():
             times_kl.append(time.perf_counter() - start)
         time_kl = float(np.median(times_kl))
 
-        # 3. HypergraphPartitioner (DynaCut's real partitioner)
-        # This builds the weighted interaction graph from the circuit
-        # and then runs KL on that — it's more expensive than raw KL
-        # because of the circuit-to-graph conversion step.
+        # 3. Spectral Bisection (Fiedler Vector)
+        times_spectral = []
+        for _ in range(N_REPEATS):
+            start = time.perf_counter()
+            _ = spectral_bisection(G)
+            times_spectral.append(time.perf_counter() - start)
+        time_spectral = float(np.median(times_spectral))
+
+        # 4. HypergraphPartitioner (DynaCut's real partitioner)
         partitioner = HypergraphPartitioner()
         max_frag = max(N // 2, 5)
         times_hyper = []
@@ -81,11 +94,12 @@ def run_partitioner_ablation():
             times_hyper.append(time.perf_counter() - start)
         time_hyper = float(np.median(times_hyper))
 
-        print(f"Random={time_random:.2e}s, KL={time_kl:.2e}s, DynaCut={time_hyper:.2e}s")
+        print(f"Random={time_random:.2e}s, KL={time_kl:.2e}s, Spectral={time_spectral:.2e}s, DynaCut={time_hyper:.2e}s")
         results.append({
             "num_qubits": N,
             "time_random": time_random,
             "time_kl": time_kl,
+            "time_spectral": time_spectral,
             "time_dynacut_partitioner": time_hyper,
         })
 

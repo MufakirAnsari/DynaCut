@@ -520,12 +520,18 @@ class DynaCutExecutor:
             strategy.contraction_mode, strategy.num_cuts,
         )
 
-        result = minimize(
-            objective,
-            initial_params,
-            method=method,
-            options={"maxiter": maxiter, "maxfun": maxiter * 10},
-        )
+        if method.upper() == "SPSA":
+            from qiskit_algorithms.optimizers import SPSA
+            optimizer = SPSA(maxiter=maxiter)
+            result = optimizer.minimize(objective, initial_params)
+            # qiskit optimizer result object has x and fun
+        else:
+            result = minimize(
+                objective,
+                initial_params,
+                method=method,
+                options={"maxiter": maxiter},
+            )
 
         wall_time = time.time() - t_start
 
@@ -539,6 +545,6 @@ class DynaCutExecutor:
             "optimal_params": result.x,
             "num_evaluations": eval_count[0],
             "convergence_history": history,
-            "optimizer_success": result.success,
+            "optimizer_success": getattr(result, "success", True),
             "wall_time_seconds": wall_time,
         }

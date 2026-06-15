@@ -1,0 +1,17 @@
+{
+    "exact_energy": 2.4915295944571754,
+    "profiles": {
+        "FakeBrisbane": {
+            "noisy_energy": 2.5185546875,
+            "absolute_error": 0.027025093042824633
+        },
+        "FakeKyiv": {
+            "noisy_energy": 2.509765625,
+            "absolute_error": 0.018236030542824633
+        },
+        "FakeTorino": {
+            "noisy_energy": 2.455078125,
+            "absolute_error": 0.03645146945717537
+        }
+    }
+}

@@ -95,25 +95,40 @@ def plot_real_vram_scaling():
     
     q_ibm = [d["num_qubits"] for d in data if d["vram_ibm"] is not None]
     v_ibm = [d["vram_ibm"] for d in data if d["vram_ibm"] is not None]
+    v_ibm_std = [d.get("vram_ibm_std", 0) for d in data if d["vram_ibm"] is not None]
     
     q_tn = [d["num_qubits"] for d in data if d["vram_tn"] is not None]
     v_tn = [d["vram_tn"] for d in data if d["vram_tn"] is not None]
+    v_tn_std = [d.get("vram_tn_std", 0) for d in data if d["vram_tn"] is not None]
     
     plt.figure(figsize=(8, 6))
-    plt.plot(q_tn, v_tn, marker='o', label='DynaCut (TN Partition)', linewidth=2, color='blue')
+    
+    # Plot IBM Statevector
     plt.plot(q_ibm, v_ibm, marker='s', label='Statevector (Full)', linewidth=2, color='red')
+    # Use np.array to compute fill_between bounds safely
+    v_ibm_np = np.array(v_ibm)
+    v_ibm_std_np = np.array(v_ibm_std)
+    plt.fill_between(q_ibm, np.maximum(v_ibm_np - 2*v_ibm_std_np, 1e-3), v_ibm_np + 2*v_ibm_std_np, color='red', alpha=0.2)
+    
+    # Plot DynaCut
+    plt.plot(q_tn, v_tn, marker='o', label='DynaCut (TN Partition)', linewidth=2, color='blue')
+    v_tn_np = np.array(v_tn)
+    v_tn_std_np = np.array(v_tn_std)
+    plt.fill_between(q_tn, np.maximum(v_tn_np - 2*v_tn_std_np, 1e-3), v_tn_np + 2*v_tn_std_np, color='blue', alpha=0.2)
+    
     # Mark OOM points
     oom_qubits = [d["num_qubits"] for d in data if d["vram_ibm"] is None]
     if oom_qubits:
         plt.scatter(oom_qubits, [max(v_ibm) * 4] * len(oom_qubits), marker='x', s=100, color='red', zorder=5, label='Statevector OOM')
+    
     plt.yscale("log")
     plt.xlabel("Number of Qubits")
     plt.ylabel("Peak RAM (MB)")
-    plt.title("Memory Scaling Benchmark")
+    plt.title("Memory Scaling Benchmark (95% CI)")
     plt.legend()
     plt.xticks(all_qubits)
     plt.tight_layout()
-    plt.savefig(os.path.join(FIGURES_DIR, "vram_scaling.pdf"), dpi=300)
+    plt.savefig(os.path.join(FIGURES_DIR, "vram_scaling.png"), dpi=300)
     plt.close()
 
 def plot_tn_vs_ibm_scaling():
@@ -412,10 +427,12 @@ def plot_partitioner_ablation():
     qubits = [d["num_qubits"] for d in data]
     time_random = [d["time_random"] for d in data]
     time_kl = [d["time_kl"] for d in data]
+    time_spectral = [d.get("time_spectral", float('nan')) for d in data]
     # Use the DynaCut partitioner field (new schema)
     time_dynacut = [d.get("time_dynacut_partitioner", d.get("time_kahypar", 0)) for d in data]
 
     plt.figure(figsize=(8, 6))
+    plt.plot(qubits, time_spectral, marker='s', label='Spectral Bisection', linewidth=2, color='orange')
     plt.plot(qubits, time_dynacut, marker='D', label='DynaCut (Weighted KL)', linewidth=2)
     plt.plot(qubits, time_kl, marker='o', label='KL (Kernighan-Lin)', linewidth=2)
     plt.plot(qubits, time_random, marker='^', label='Random Bisection', linewidth=2)
@@ -427,7 +444,7 @@ def plot_partitioner_ablation():
     plt.legend()
     plt.xticks(qubits)
     plt.tight_layout()
-    plt.savefig(os.path.join(FIGURES_DIR, "partitioner_ablation.pdf"), dpi=300)
+    plt.savefig(os.path.join(FIGURES_DIR, "partitioner_ablation.png"), dpi=300)
     plt.close()
 
 def plot_noise_impact():
@@ -488,15 +505,438 @@ def plot_cross_problem():
             plt.savefig(os.path.join(FIGURES_DIR, "cross_problem.pdf"), dpi=300)
             plt.close()
 
+def plot_mps_baseline():
+    print("Generating Plot: Classical MPS Baseline vs DynaCut Scaling")
+    filepath = os.path.join(RESULTS_DIR, "mps_baseline.json")
+    if not os.path.exists(filepath):
+        print("  WARNING: mps_baseline.json not found, skipping.")
+        return
+        
+    with open(filepath, 'r') as f:
+        data = json.load(f)
+        
+    # Plot 1: 1D Chain Time scaling
+    tfim = data.get("1d_tfim", {})
+    if tfim:
+        qubits = sorted([int(k) for k in tfim.keys()])
+        times = [tfim[str(q)]["dmrg_time"] for q in qubits]
+        dyna_times = [tfim[str(q)]["dynacut_time"] for q in qubits]
+        
+        plt.figure(figsize=(8, 6))
+        plt.plot(qubits, times, marker='o', linewidth=2, color='green', label='Classical DMRG Time (1D)')
+        plt.plot(qubits, dyna_times, marker='s', linewidth=2, color='blue', label='DynaCut Time (1D)')
+        plt.xlabel("Number of Qubits")
+        plt.ylabel("Execution Time (seconds)")
+        plt.title("Pure Classical TN Baseline (1D TFIM)")
+        plt.yscale('log')
+        plt.xticks(qubits)
+        plt.legend()
+        plt.tight_layout()
+        plt.savefig(os.path.join(FIGURES_DIR, "mps_baseline_time_1d.pdf"), dpi=300)
+        plt.close()
+        
+    # Plot 2: SBM Memory scaling
+    sbm = data.get("sbm_tn_memory", {})
+    if sbm:
+        sorted_keys = sorted(sbm.keys(), key=float)
+        p_outs = [float(k) for k in sorted_keys]
+        mem_mb = [sbm[k]["memory_mb"] for k in sorted_keys]
+        dyna_mem = [sbm[k]["dynacut_memory_mb"] for k in sorted_keys]
+        
+        plt.figure(figsize=(8, 6))
+        plt.plot(p_outs, mem_mb, marker='s', linewidth=2, color='red', label='Exact Classical TN')
+        plt.plot(p_outs, dyna_mem, marker='o', color='blue', linestyle='--', linewidth=2, label='DynaCut (Partitioned)')
+        plt.xlabel("SBM Density ($p_{out}$)")
+        plt.ylabel("Required Memory (MB)")
+        plt.yscale('log')
+        plt.title("Memory Explosion on Dense Graphs (N=20)")
+        plt.legend()
+        plt.tight_layout()
+        plt.savefig(os.path.join(FIGURES_DIR, "mps_baseline_memory_sbm.pdf"), dpi=300)
+        plt.close()
+
+def plot_hpc_scaling():
+    """Plot HPC-regime memory scaling: Classical Statevector vs DynaCut."""
+    print("Generating Plot: HPC Regime Scaling")
+    filepath = os.path.join(RESULTS_DIR, "hpc_scaling.json")
+    if not os.path.exists(filepath):
+        print("  WARNING: hpc_scaling.json not found, skipping.")
+        return
+
+    with open(filepath, 'r') as f:
+        data = json.load(f)
+
+    ns = sorted([int(k) for k in data.keys()])
+
+    # Classical statevector: use log2(GB) for clean plotting across huge range
+    classical_log2_gb = [data[str(n)]["classical_log2_memory_gb"] for n in ns]
+
+    # DynaCut: fragment statevector memory (the actual per-fragment cost)
+    dynacut_frag_mb = [data[str(n)]["dynacut_fragment_sv_mb"] for n in ns]
+    dynacut_frag_log2_gb = [np.log2(m / 1024) if m > 0 else -30 for m in dynacut_frag_mb]
+
+    cuts = [data[str(n)]["dynacut_cuts"] for n in ns]
+    max_frags = [data[str(n)]["dynacut_max_fragment_qubits"] for n in ns]
+
+    # ===== Plot 1: Memory scaling (log2 GB) =====
+    fig, ax1 = plt.subplots(figsize=(10, 6))
+
+    ax1.plot(ns, classical_log2_gb, 'o-', color='#e74c3c', linewidth=2.5,
+             markersize=6, label=r'Classical Statevector ($2^N \times 16$ bytes)')
+    ax1.plot(ns, dynacut_frag_log2_gb, 's--', color='#2980b9', linewidth=2.5,
+             markersize=6, label=r'DynaCut Fragment ($2^{N/P} \times 16$ bytes)')
+
+    # HPC RAM limits as log2(GB)
+    ax1.axhline(y=np.log2(32), color='#8e44ad', linestyle=':', linewidth=2,
+                label='HPC Workstation (32 GB)', alpha=0.8)
+    ax1.axhline(y=np.log2(256), color='#e67e22', linestyle=':', linewidth=2,
+                label='HPC Node (256 GB)', alpha=0.8)
+
+    ax1.set_xlabel("Number of Qubits ($N$)", fontsize=13)
+    ax1.set_ylabel(r"Memory ($\log_2$ GB)", fontsize=13)
+    ax1.set_title("Classical Memory Wall: Statevector vs DynaCut Fragment Size",
+                   fontsize=14, fontweight='bold')
+
+    # Add right-side labels for absolute memory at key ticks
+    ax1_r = ax1.twinx()
+    ax1_r.set_ylim(ax1.get_ylim())
+    tick_vals = [-10, 0, 5, 10, 20, 30, 40]
+    tick_labels = ['1 MB', '1 GB', '32 GB', '1 TB', '1 PB', '1 EB', '1 ZB']
+    ax1_r.set_yticks(tick_vals)
+    ax1_r.set_yticklabels(tick_labels, fontsize=9)
+    ax1_r.set_ylabel("Absolute Memory", fontsize=11)
+
+    ax1.legend(loc='upper left', fontsize=10)
+    ax1.grid(True, alpha=0.3)
+    fig.tight_layout()
+    fig.savefig(os.path.join(FIGURES_DIR, "hpc_scaling.pdf"), dpi=300)
+    plt.close(fig)
+
+    # ===== Plot 2: Cuts and fragment size vs N =====
+    fig2, ax = plt.subplots(figsize=(10, 5))
+
+    color_k = '#e74c3c'
+    color_f = '#2980b9'
+
+    ax.plot(ns, cuts, 'o-', color=color_k, linewidth=2.5, markersize=6,
+            label='Wire Cuts ($K$)')
+    ax.set_xlabel("Number of Qubits ($N$)", fontsize=13)
+    ax.set_ylabel("Number of Wire Cuts ($K$)", fontsize=13, color=color_k)
+    ax.tick_params(axis='y', labelcolor=color_k)
+
+    ax2 = ax.twinx()
+    ax2.plot(ns, max_frags, 's--', color=color_f, linewidth=2.5, markersize=6,
+             label='Max Fragment Size (qubits)')
+    ax2.set_ylabel("Max Fragment Size (qubits)", fontsize=13, color=color_f)
+    ax2.tick_params(axis='y', labelcolor=color_f)
+
+    ax.set_title("DynaCut Partitioning Profile on Dense SBM ($p_{out}=0.10$)",
+                  fontsize=13, fontweight='bold')
+
+    lines1, labels1 = ax.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    ax.legend(lines1 + lines2, labels1 + labels2, loc='center left', fontsize=10)
+
+    ax.grid(True, alpha=0.3)
+    fig2.tight_layout()
+    fig2.savefig(os.path.join(FIGURES_DIR, "hpc_cuts_profile.pdf"), dpi=300)
+    plt.close(fig2)
+
+    print(f"  Saved hpc_scaling.pdf and hpc_cuts_profile.pdf")
+
+
+
+def plot_chemistry_pes():
+    """Generates the Chemistry PES plot."""
+    data_path = os.path.join(RESULTS_DIR, "chemistry_pes.json")
+    if not os.path.exists(data_path):
+        print("Missing chemistry_pes.json, skipping chemistry PES plot.")
+        return
+        
+    with open(data_path, "r") as f:
+        data = json.load(f)
+        
+    distances = data.get("distances", [])
+    energies_exact = data.get("exact_energies", [])
+    energies_vqe = data.get("dynacut_energies", [])
+    
+    if not distances:
+        return
+        
+    plt.figure(figsize=(8, 6))
+    plt.plot(distances, energies_exact, 'k--', linewidth=2, label="Exact Eigensolver")
+    plt.plot(distances, energies_vqe, 'ro', markersize=8, label="DynaCut UCCSD (K=1)")
+    
+    plt.xlabel(r"Interatomic Distance $R$ ($\AA$)")
+    plt.ylabel("Ground State Energy (Hartree)")
+    plt.title(r"$H_2$ Potential Energy Surface via DynaCut Tensor Network")
+    plt.legend()
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    
+    plt.savefig(os.path.join(FIGURES_DIR, "chemistry_pes.pdf"), dpi=300)
+    plt.close()
+
+def plot_svd_ablation():
+    """Generates the SVD Ablation plot."""
+    data_path = os.path.join(RESULTS_DIR, "svd_ablation.json")
+    if not os.path.exists(data_path):
+        print("Missing svd_ablation.json, skipping SVD ablation plot.")
+        return
+        
+    with open(data_path, "r") as f:
+        data = json.load(f)
+        
+    chis = []
+    errors = []
+    times = []
+    memories = []
+    exact_e = None
+    exact_t = None
+    exact_m = None
+    
+    for chi_str, res in data.items():
+        if chi_str == "exact_sv":
+            exact_e = res["energy"]
+            exact_t = res["time_seconds"]
+            exact_m = res.get("peak_memory_mb", 0)
+        else:
+            chis.append(int(chi_str))
+            
+    # Sort by chi
+    chis.sort()
+    for chi in chis:
+        res = data[str(chi)]
+        errors.append(res["error"])
+        times.append(res["time_seconds"])
+        memories.append(res.get("peak_memory_mb", 0))
+            
+    if not chis:
+        return
+        
+    fig, ax1 = plt.subplots(figsize=(8, 6))
+    
+    color = 'tab:red'
+    ax1.set_xlabel('MPS Max Bond Dimension ($\chi$)')
+    ax1.set_ylabel('Absolute Energy Error (Hartree)', color=color)
+    ax1.plot(chis, errors, marker='o', color=color, linewidth=2, label='Truncation Error')
+    ax1.set_yscale('log')
+    ax1.set_xscale('log', base=2)
+    ax1.tick_params(axis='y', labelcolor=color)
+    ax1.grid(True, alpha=0.3)
+    
+    ax2 = ax1.twinx()
+    color = 'tab:blue'
+    ax2.set_ylabel('Wall-clock Time (s)', color=color)
+    ax2.plot(chis, times, marker='s', color=color, linewidth=2, linestyle=':', label='Time')
+    if exact_t is not None:
+        ax2.axhline(y=exact_t, color='tab:blue', linestyle='--', alpha=0.5, label='Exact Statevector Time')
+    ax2.set_yscale('log')
+    ax2.tick_params(axis='y', labelcolor=color)
+    
+    # Optional: third axis for memory
+    # ax3 = ax1.twinx()
+    # ax3.spines['right'].set_position(('outward', 60))
+    # color = 'tab:green'
+    # ax3.set_ylabel('Peak Memory (MB)', color=color)
+    # ax3.plot(chis, memories, marker='^', color=color, linewidth=2, linestyle='-.', label='Memory')
+    # ax3.tick_params(axis='y', labelcolor=color)
+    
+    lines1, labels1 = ax1.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    ax1.legend(lines1 + lines2, labels1 + labels2, loc='upper right', fontsize=10)
+    
+    fig.tight_layout()
+    plt.title("Tensor Network Pareto Frontier: Precision vs. Time (N=26 Dense SBM)")
+    plt.savefig(os.path.join(FIGURES_DIR, "svd_ablation.pdf"), dpi=300)
+    plt.close()
+
+def plot_optimizer_comparison():
+    data_path = os.path.join(RESULTS_DIR, "optimizer_comparison.json")
+    if not os.path.exists(data_path):
+        return
+    with open(data_path, 'r') as f:
+        data = json.load(f)
+    print("Generating Plot: Optimizer Comparison")
+    
+    exact_e = data.get("exact_energy", 0.0)
+    optimizers = data.get("optimizers", {})
+    
+    plt.figure(figsize=(10, 6))
+    
+    colors = {"COBYLA": "#e74c3c", "Nelder-Mead": "#f39c12", "SPSA": "#2ecc71"}
+    
+    for opt, runs in optimizers.items():
+        if not runs: continue
+        
+        # Determine the maximum iteration length across all seeds
+        max_len = max(len(run.get("convergence", [])) for run in runs)
+        
+        # Pad shorter runs with their final value so we can compute mean/std across seeds
+        padded_runs = []
+        for run in runs:
+            conv = run.get("convergence", [])
+            if not conv: continue
+            padded = list(conv) + [conv[-1]] * (max_len - len(conv))
+            padded_runs.append(padded)
+            
+        if not padded_runs: continue
+            
+        arr = np.array(padded_runs)
+        mean_conv = np.mean(arr, axis=0)
+        std_conv = np.std(arr, axis=0)
+        
+        iterations = np.arange(1, max_len + 1)
+        color = colors.get(opt, "blue")
+        
+        plt.plot(iterations, mean_conv, linewidth=2.5, color=color, 
+                 label=f"{opt} (Final: {mean_conv[-1]:.2f} ± {std_conv[-1]:.2f})")
+        plt.fill_between(iterations, mean_conv - std_conv, mean_conv + std_conv, 
+                         color=color, alpha=0.2)
+        
+    plt.axhline(y=exact_e, color='black', linestyle='--', linewidth=2, label=f'Exact Energy ({exact_e:.2f})')
+    
+    plt.xlabel("Function Evaluations (Iterative Steps)", fontsize=14)
+    plt.ylabel("Expected Energy (Hartree)", fontsize=14)
+    plt.title("VQE Optimizer Comparison Under HPC-Scale QPD Sampling Noise (N=16)\nAverage over 5 independent random initializations", fontsize=15)
+    plt.legend(fontsize=12, loc='upper right')
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.savefig(os.path.join(FIGURES_DIR, "optimizer_comparison.pdf"), dpi=300)
+    plt.close()
+
+def plot_breakeven_curve(results_dir, output_dir):
+    json_path = os.path.join(results_dir, 'breakeven_curve.json')
+    if not os.path.exists(json_path):
+        print(f"Skipping Breakeven Curve: {json_path} not found.")
+        return
+
+    with open(json_path, 'r') as f:
+        res = json.load(f)
+
+    data = res['data']
+    p_cx = [d['p_cx'] for d in data]
+    mono_energy = [d['monolithic_energy'] for d in data]
+    cut_energy = [d['dynacut_energy'] for d in data]
+    
+    # Statistical error band (10k shots equivalent)
+    # gamma = res['gamma'], norm_H = res['norm_H']
+    gamma = res['gamma']
+    norm_H = res['norm_H']
+    shots = 100000
+    sigma = (gamma * norm_H) / np.sqrt(shots)
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+
+    ax.plot(p_cx, mono_energy, 'o-', color='#e74c3c', linewidth=2.5, label='Monolithic (Exact Noisy)')
+    ax.plot(p_cx, cut_energy, 's-', color='#2ecc71', linewidth=2.5, label='DynaCut (Exact Noisy + QPD Reconstructed)')
+    
+    # Add statistical shading
+    ax.fill_between(p_cx, np.array(cut_energy) - sigma, np.array(cut_energy) + sigma, 
+                    color='#2ecc71', alpha=0.2, label=rf'QPD Sampling Variance ($S={shots}$)')
+
+    # Add Ideal energy reference
+    ideal = res['ideal_energy']
+    ax.axhline(ideal, color='black', linestyle='--', linewidth=2, label='Ideal Ground State')
+    
+    # Fully mixed state reference (expected energy = 7.5 for N=10 random 3-regular MaxCut)
+    ax.axhline(7.5, color='gray', linestyle=':', linewidth=2, label='Maximally Mixed State')
+    
+    ax.set_xlabel(r'Two-Qubit Depolarizing Error Rate ($p_{cx}$)', fontsize=14)
+    ax.set_ylabel(r'Expected Energy $\langle H \rangle$', fontsize=14)
+    ax.set_title('Empirical Breakeven: Mitigation of Hardware Noise via Cutting', fontsize=16)
+    
+    ax.legend(fontsize=11)
+    ax.grid(True, linestyle='--', alpha=0.7)
+    
+    # Find crossover
+    crossover_idx = None
+    for i in range(len(p_cx)):
+        if cut_energy[i] > mono_energy[i]:
+            crossover_idx = i
+            break
+            
+    if crossover_idx is not None and crossover_idx > 0:
+        x_cross = p_cx[crossover_idx]
+        y_cross = cut_energy[crossover_idx]
+        ax.annotate('Breakeven Point', xy=(x_cross, y_cross), xytext=(x_cross+0.01, y_cross+0.5),
+                    arrowprops=dict(facecolor='black', shrink=0.05),
+                    fontsize=12, fontweight='bold')
+    
+    ax.grid(axis='y', linestyle='--', alpha=0.7, zorder=0)
+
+    plt.tight_layout()
+    out_path = os.path.join(output_dir, 'breakeven_curve.pdf')
+    plt.savefig(out_path, format='pdf', bbox_inches='tight')
+    plt.close()
+    print(f"Saved {out_path}")
+
+def plot_variance_decomposition(results_dir, output_dir):
+    json_path = os.path.join(results_dir, 'variance_decomposition.json')
+    if not os.path.exists(json_path):
+        print(f"Skipping Variance Decomposition: {json_path} not found.")
+        return
+
+    with open(json_path, 'r') as f:
+        res = json.load(f)
+
+    labels = ['Monolithic\n(No Cuts)', 'DynaCut\n(K=3, S=1M, $\chi$=8)']
+    
+    mono = res['monolithic']
+    cut = res['dynacut']
+    
+    eps_phys = [mono['eps_phys'], cut['eps_phys']]
+    eps_trunc = [mono['eps_trunc'], cut['eps_trunc']]
+    eps_stat = [mono['eps_stat'], cut['eps_stat']]
+
+    x = np.arange(len(labels))
+    width = 0.5
+    
+    fig, ax = plt.subplots(figsize=(7, 6))
+
+    # Stack the bars
+    p1 = ax.bar(x, eps_phys, width, label=r'Hardware Noise ($\epsilon_{phys}$)', color='#e74c3c', edgecolor='black', zorder=3)
+    p2 = ax.bar(x, eps_trunc, width, bottom=eps_phys, label=r'TN Truncation ($\epsilon_{trunc}$)', color='#f39c12', edgecolor='black', zorder=3)
+    
+    bottom_stat = [eps_phys[i] + eps_trunc[i] for i in range(2)]
+    p3 = ax.bar(x, eps_stat, width, bottom=bottom_stat, label=r'QPD Variance ($\epsilon_{stat}$)', color='#3498db', edgecolor='black', hatch='//', zorder=3)
+
+    # Add text annotations for total error
+    for i in range(2):
+        total = bottom_stat[i] + eps_stat[i]
+        ax.text(x[i], total + 0.05, f"{total:.2f}", ha='center', va='bottom', fontweight='bold', fontsize=12)
+
+    ax.set_ylabel(r'Expected Absolute Error ($|\langle H_{ideal} \rangle - \langle H_{noisy} \rangle|$)', fontsize=13)
+    ax.set_title('Error Budget Decomposition ($p_{cx}=0.05$)', fontsize=15, fontweight='bold', pad=15)
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, fontsize=12)
+    ax.legend(fontsize=11)
+    
+    ax.grid(axis='y', linestyle='--', alpha=0.7, zorder=0)
+
+    plt.tight_layout()
+    out_path = os.path.join(output_dir, 'variance_decomposition.pdf')
+    plt.savefig(out_path, format='pdf', bbox_inches='tight')
+    plt.close()
+    print(f"Saved {out_path}")
+
 if __name__ == "__main__":
-    plot_cut_vs_uncut_error()
-    plot_topology_stress_test()
-    plot_real_vram_scaling()
-    plot_tn_vs_ibm_scaling()
-    plot_pareto_frontier()
-    plot_vqe_convergence()
-    plot_baseline_comparison()
-    plot_partitioner_ablation()
-    plot_noise_impact()
-    plot_cross_problem()
-    print("All figures generated successfully in paper/figures/")
+    import sys
+    print("Generating figures...")
+    try:
+        plot_pareto_frontier()
+        plot_vqe_convergence()
+        plot_partitioner_ablation()
+        plot_topology_stress_test()
+        plot_tn_vs_ibm_scaling()
+        plot_hpc_scaling()
+        plot_mps_baseline()
+        plot_cut_vs_uncut_error()
+        plot_svd_ablation()
+        plot_chemistry_pes()
+        plot_optimizer_comparison()
+        plot_breakeven_curve(RESULTS_DIR, FIGURES_DIR)
+        plot_variance_decomposition(RESULTS_DIR, FIGURES_DIR)
+    except Exception as e:
+        print(f"Error generating figures: {e}")
+    print(f"Figures generated in {FIGURES_DIR}")

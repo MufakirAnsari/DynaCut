@@ -110,7 +110,8 @@ class ResourceHypervisor:
             # Solve: 2^n × 16 / 1e9 ≤ max_vram_gb × 0.8  (80% safety margin)
             usable_bytes = max_vram_gb * 0.8 * 1e9
             self.max_qubits = int(math.log2(usable_bytes / 16))
-            # Cap at a reasonable limit
+            # Cap at 25 qubits: 2^25 × 16 = 512 MB statevector, safe for
+            # most GPUs while keeping fragment circuits simulable.
             self.max_qubits = min(self.max_qubits, 25)
 
         self.partitioner = HypergraphPartitioner(coupling_map=coupling_map)
@@ -171,10 +172,18 @@ class ResourceHypervisor:
             # The largest intermediate in contraction is bounded by:
             #   prod(bond_dims along the widest slice)
             # Conservative upper bound: D^(num_cuts) × 8 bytes
-            max_intermediate_elements = QPD_BASIS_SIZE ** num_cuts
-            estimated_ram_gb = max_intermediate_elements * 8 / (1024**3)
+            # Use log-space to avoid OverflowError for large K
+            log2_elements = num_cuts * math.log2(QPD_BASIS_SIZE)
+            log2_ram_gb = log2_elements + math.log2(8) - 30  # 30 = log2(1024^3)
+            if log2_ram_gb < 64:  # fits in a float
+                estimated_ram_gb = 2 ** log2_ram_gb
+            else:
+                estimated_ram_gb = float('inf')
 
-            qpd_overhead = float(QPD_BASIS_SIZE ** num_cuts)
+            if log2_elements < 1023:  # fits in a float
+                qpd_overhead = float(QPD_BASIS_SIZE ** num_cuts)
+            else:
+                qpd_overhead = float('inf')
 
             if estimated_ram_gb <= self.max_ram_gb:
                 best_strategy = CutStrategy(
@@ -206,13 +215,17 @@ class ResourceHypervisor:
                 self.max_ram_gb, num_cuts,
             )
 
+            # Use log-space to avoid OverflowError for large K
+            log2_el = num_cuts * math.log2(QPD_BASIS_SIZE)
+            qpd_overhead_val = float(QPD_BASIS_SIZE ** num_cuts) if log2_el < 1023 else float('inf')
+
             best_strategy = CutStrategy(
                 partition_labels=labels,
                 cut_edges=cut_edges,
                 num_fragments=num_fragments,
                 max_fragment_size=self.max_qubits,
                 num_cuts=num_cuts,
-                qpd_overhead=float(QPD_BASIS_SIZE ** num_cuts),
+                qpd_overhead=qpd_overhead_val,
                 estimated_contraction_ram_gb=self.max_ram_gb,
                 contraction_mode="approximate",
             )

@@ -1,0 +1,114 @@
+{
+    "bond_dim_ablation": [
+        {
+            "max_bond": "4",
+            "energy": 4.839973010514692,
+            "exact_gs": 0.0,
+            "abs_error": 4.839973010514692,
+            "rel_error_pct": 0,
+            "num_cuts": 0,
+            "contraction_mode": "trivial",
+            "time_seconds": 0.13,
+            "estimated_mem_mb": 0.0
+        },
+        {
+            "max_bond": "8",
+            "energy": 4.832999043933516,
+            "exact_gs": 0.0,
+            "abs_error": 4.832999043933516,
+            "rel_error_pct": 0,
+            "num_cuts": 0,
+            "contraction_mode": "trivial",
+            "time_seconds": 0.13,
+            "estimated_mem_mb": 0.0
+        },
+        {
+            "max_bond": "16",
+            "energy": 4.842295178690752,
+            "exact_gs": 0.0,
+            "abs_error": 4.842295178690752,
+            "rel_error_pct": 0,
+            "num_cuts": 0,
+            "contraction_mode": "trivial",
+            "time_seconds": 0.13,
+            "estimated_mem_mb": 0.0
+        },
+        {
+            "max_bond": "32",
+            "energy": 7.695264308311364,
+            "exact_gs": 0.0,
+            "abs_error": 7.695264308311364,
+            "rel_error_pct": 0,
+            "num_cuts": 0,
+            "contraction_mode": "trivial",
+            "time_seconds": 0.13,
+            "estimated_mem_mb": 0.0
+        },
+        {
+            "max_bond": "64",
+            "energy": 7.693475434529856,
+            "exact_gs": 0.0,
+            "abs_error": 7.693475434529856,
+            "rel_error_pct": 0,
+            "num_cuts": 0,
+            "contraction_mode": "trivial",
+            "time_seconds": 0.14,
+            "estimated_mem_mb": 0.0
+        },
+        {
+            "max_bond": "128",
+            "energy": 7.706562447967474,
+            "exact_gs": 0.0,
+            "abs_error": 7.706562447967474,
+            "rel_error_pct": 0,
+            "num_cuts": 0,
+            "contraction_mode": "trivial",
+            "time_seconds": 0.13,
+            "estimated_mem_mb": 0.0
+        },
+        {
+            "max_bond": "256",
+            "energy": 4.8359782705628716,
+            "exact_gs": 0.0,
+            "abs_error": 4.8359782705628716,
+            "rel_error_pct": 0,
+            "num_cuts": 0,
+            "contraction_mode": "trivial",
+            "time_seconds": 0.13,
+            "estimated_mem_mb": 0.0
+        },
+        {
+            "max_bond": "exact",
+            "energy": 4.848693110700196,
+            "exact_gs": 0.0,
+            "abs_error": 4.848693110700196,
+            "rel_error_pct": 0,
+            "num_cuts": 0,
+            "contraction_mode": "trivial",
+            "time_seconds": 0.13,
+            "estimated_mem_mb": 0.0
+        }
+    ],
+    "chemistry": {
+        "H2": {
+            "num_qubits": 4,
+            "basis": "STO-3G",
+            "mapping": "Jordan-Wigner",
+            "exact_gs_ha": -1.8572750302023797,
+            "dynacut_energy_ha": -1.6846759051727913,
+            "abs_error_ha": 0.1725991250295884,
+            "num_cuts": 0,
+            "time_seconds": 0.11
+        },
+        "LiH": {
+            "num_qubits": 10,
+            "basis": "STO-3G",
+            "mapping": "Parity",
+            "exact_gs_ha": -8.908697116424223,
+            "dynacut_energy_ha": -7.69368806571145,
+            "abs_error_ha": 1.2150090507127729,
+            "num_cuts": 0,
+            "time_seconds": 0.76
+        }
+    }
+}

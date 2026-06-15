@@ -1,56 +1,65 @@
 [
     {
         "num_qubits": 10,
-        "time_random": 6.619957275688648e-07,
-        "time_kl": 6.245799886528403e-05,
-        "time_dynacut_partitioner": 0.00025656500656623393
+        "time_random": 6.609989213757217e-07,
+        "time_kl": 6.767499871784821e-05,
+        "time_spectral": 0.0022160130029078573,
+        "time_dynacut_partitioner": 0.0003338490023452323
     },
     {
         "num_qubits": 12,
-        "time_random": 4.999965312890708e-07,
-        "time_kl": 7.902999641373754e-05,
-        "time_dynacut_partitioner": 0.0003104269999312237
+        "time_random": 7.710004865657538e-07,
+        "time_kl": 0.00010674599980120547,
+        "time_spectral": 0.0029414809978334233,
+        "time_dynacut_partitioner": 0.00042170500091742724
     },
     {
         "num_qubits": 14,
-        "time_random": 5.720066837966442e-07,
-        "time_kl": 0.00011057899973820895,
-        "time_dynacut_partitioner": 0.0003903280012309551
+        "time_random": 8.509996405337006e-07,
+        "time_kl": 0.00013624200073536485,
+        "time_spectral": 0.0036959780009055976,
+        "time_dynacut_partitioner": 0.0005893400011700578
     },
     {
         "num_qubits": 16,
-        "time_random": 6.609989213757217e-07,
-        "time_kl": 0.0001363080009468831,
-        "time_dynacut_partitioner": 0.0005244310013949871
+        "time_random": 6.409973138943315e-07,
+        "time_kl": 0.00013924700033385307,
+        "time_spectral": 0.004298691001167754,
+        "time_dynacut_partitioner": 0.0005827489985676948
     },
     {
         "num_qubits": 18,
-        "time_random": 6.210029823705554e-07,
-        "time_kl": 0.00014983300206949934,
-        "time_dynacut_partitioner": 0.0005690950056305155
+        "time_random": 6.310001481324434e-07,
+        "time_kl": 0.00014920299872756004,
+        "time_spectral": 0.003108993001660565,
+        "time_dynacut_partitioner": 0.0006012590019963682
     },
     {
         "num_qubits": 20,
-        "time_random": 6.409973138943315e-07,
-        "time_kl": 0.00017512100021122023,
-        "time_dynacut_partitioner": 0.000679133998346515
+        "time_random": 6.810005288571119e-07,
+        "time_kl": 0.0001818229975469876,
+        "time_spectral": 0.003223873001843458,
+        "time_dynacut_partitioner": 0.0007597469993925188
     },
     {
         "num_qubits": 22,
-        "time_random": 8.209972293116152e-07,
-        "time_kl": 0.0002073319992632605,
-        "time_dynacut_partitioner": 0.0008251690014731139
+        "time_random": 8.009992598090321e-07,
+        "time_kl": 0.00020795499949599616,
+        "time_spectral": 0.0037028900005680043,
+        "time_dynacut_partitioner": 0.0008019220003916416
     },
     {
         "num_qubits": 24,
-        "time_random": 7.519993232563138e-07,
-        "time_kl": 0.0002422480029053986,
-        "time_dynacut_partitioner": 0.0009205899987136945
+        "time_random": 7.710004865657538e-07,
+        "time_kl": 0.00024308000138262287,
+        "time_spectral": 0.004044063000037568,
+        "time_dynacut_partitioner": 0.0009360010008094832
     },
     {
         "num_qubits": 26,
-        "time_random": 8.819988579489291e-07,
-        "time_kl": 0.000279688996670302,
-        "time_dynacut_partitioner": 0.0010575889973551966
+        "time_random": 9.109971870202571e-07,
+        "time_kl": 0.0002788759993563872,
+        "time_spectral": 0.003945357999327825,
+        "time_dynacut_partitioner": 0.001808502998756012
     }
 ]

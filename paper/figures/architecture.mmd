@@ -5,7 +5,7 @@ graph TD
         C --> D{Is Exact RAM <br> within 256MB Limit?}
         
         D -- Yes --> E[Statevector / MPS <br> Exact Simulation]
-        D -- No --> F[KaHyPar Multi-level <br> Hypergraph Partitioner]
+        D -- No --> F[KL Bisection <br> Hypergraph Partitioner]
         
         F -->|Minimize cross-boundary <br> entanglement| G[Sub-circuits & <br> QPD Observables]
         G --> H[Variance Bound <br> Dynamic Shot Scaler]
